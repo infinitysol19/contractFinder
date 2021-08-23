@@ -1,0 +1,65 @@
+
+{{-- extend  --}}
+@extends('admin-layout.app')
+@extends('includes-admin.header')
+@extends('includes-admin.footer')
+@extends('includes-admin.sidebar')
+{{-- page titles --}}
+@section('title', 'Dashboard')
+@section('content')
+<div class="main-container">
+  <div class="xs-pd-20-10 pd-ltr-20">
+    <div class="title pb-20">
+
+    </div>
+    
+    <div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="">
+							<h4 class="text-blue h4">Add Package
+             <a href="{{route('packages')}}" class="my-2 btn btn-primary btn-sm shadow-sm border-0  float-right">Go Back <span class="icon-copy ti-arrow-left"></span></a>
+							</h4>
+						</div>
+					
+					</div>
+					<form method="post" action="{{ route('addpackage') }}">
+						@csrf
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Name</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Basic" name="name">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Price</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" placeholder="70" type="number" name="price" step="any">
+							</div>
+						</div>
+
+							<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Free Trial Days</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" placeholder="12" type="number" name="trial_days" step="any">
+							</div>
+						</div>
+
+						<div class="collapse-box collapse show" id="basic-form1" style="">
+						<div class="code-box">
+							<div class="clearfix">
+								<button type="submit" class="btn btn-success btn-sm code-copy pull-left" data-clipboard-target="#copy-pre">Save</button>
+								
+							</div>
+					</form>
+					
+				</div>
+    
+    
+  </div>
+
+
+</div>
+@endsection
+@section("footer")
+@parent
+@endsection
