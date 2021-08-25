@@ -10,6 +10,6 @@ class DashboardController extends Controller
     public function index(){
 
 
-        return view('frontend.myaccount.index');
+        return view('frontend.myaccount.index')->with('template','dashboard');
     }
 }

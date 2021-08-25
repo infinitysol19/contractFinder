@@ -37,30 +37,42 @@
                         </div>
                         <ul class="dashboard-menu">
                             <li>
-                                <a href="#0" class="active"><i class="flaticon-dashboard"></i>Dashboard</a>
+                                <a href="{{ route('dashboard') }}" class="active dashboard"><i class="flaticon-dashboard"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="profile.html"><i class="flaticon-settings"></i>Personal Profile </a>
+                                <a href="{{ route('profile') }}" class="profile"><i class="flaticon-settings"></i>Personal Profile </a>
+                            </li>
+
+                             <li>
+                                <a href="{{ route('frontsubscription') }}" class="mangeuser"><i class="flaticon-alarm"></i>Subscription</a>
                             </li>
                             <li>
-                                <a href="my-bid.html"><i class="flaticon-auction"></i>My Bids</a>
+                                <a href="{{ route('bidWriter') }}" class="bidwriter"><i class="flaticon-auction"></i> Bid Writer</a>
+                            </li>
+                    
+                            <li>
+                                <a href="{{ route('myalerts') }}" class="myalerts"><i class="flaticon-alarm"></i>My Alerts</a>
                             </li>
                             <li>
-                                <a href="winning-bids.html"><i class="flaticon-best-seller"></i>Winning Bids</a>
+                                <a href="{{ route('whishlist') }}" class="whishlist"><i class="flaticon-star"></i>My Favorites</a>
                             </li>
                             <li>
-                                <a href="notifications.html"><i class="flaticon-alarm"></i>My Alerts</a>
+                                <a href="{{ route('recentallyview') }}" class="recentally"> <i class="flaticon-shake-hand"></i>Recently viewed</a>
                             </li>
-                            <li>
-                                <a href="my-favorites.html"><i class="flaticon-star"></i>My Favorites</a>
-                            </li>
-                            <li>
-                                <a href="referral.html"><i class="flaticon-shake-hand"></i>Referrals</a>
+
+                             <li>
+                                <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-               @include('frontend.myaccount.profile')
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+               @include('frontend.myaccount.'.$template)
             </div>
         </div>
     </section>
@@ -70,34 +82,6 @@
 @endsection
 @section("footer")
 @parent
-
-<style type="text/css">
-    
-
-
-</style>
-<script type="text/javascript">
-    
- jQuery(document).ready(function($) {
-
-
-// $(".readmore").on('click touchstart', function(event) {
-//         var txt = $(".more-content").is(':visible') ? 'Show more (+)' : 'Less (–)';
-//         $(this).parent().prev(".more-content").toggleClass("cg-visible");
-//         $(this).html(txt);
-//         event.preventDefault();
-//     }); 
-      $(".show-more").click(function () {
-        if($(this).siblings('.text').hasClass("show-more-height")) {
-            $(this).text("(Show Less)");
-        } else {
-            $(this).text("(Show More)");
-        }
-
-        $(".text").toggleClass("show-more-height");
-    });
-  });
-</script>
 
 @endsection
 

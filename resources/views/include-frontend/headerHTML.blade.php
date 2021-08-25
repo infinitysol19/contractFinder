@@ -30,15 +30,43 @@
 
                    
 
-                    <ul class="cart-button-area ">
+                    <ul class="nav justify-content-center">
 
                                   
 
-                        <li>
+                        <li class="nav-item">
 
-                            <a href="sign-in.html" class="user-button"><i class="flaticon-user"></i></a>
+                            <a href="{{ route('dashboard') }}" class="nav-link text-white">My Account</a>
 
-                        </li>                        
+                        </li>  
+
+                         @if (Auth::check())
+                           <li class="nav-item">
+
+                            <a href="{{ route('logout') }}" class="nav-link text-white" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+
+                        </li>  
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                          @else
+                        <li class="nav-item">
+
+                            <a href="{{ route('login') }}" class="nav-link text-white">Sign In </a>
+
+                        </li>  
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('register') }}" class="nav-link text-white">Sign Up</a>
+
+                        </li>   
+
+                          @endif
+                         
+
+                                        
 
                     </ul>
 

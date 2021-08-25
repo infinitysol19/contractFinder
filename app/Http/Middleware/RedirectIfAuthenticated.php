@@ -28,7 +28,8 @@ default:
 if (Auth::guard($guard)->check()) {
 if (empty(Auth::user()->email_verified_at)) {
 
-return redirect('/email/verify');
+// return redirect('/email/verify');
+return redirect(RouteServiceProvider::HOME);
 }else {
 return redirect(RouteServiceProvider::HOME);
 }

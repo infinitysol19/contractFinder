@@ -27,18 +27,35 @@
                         <p>You can log in to your Contract Finder Pro account here.</p>
                     </div>
                    
-                    <form class="login-form">
+                    <form class="login-form" novalidate="" action="{{ route('login') }}"  method="POST">
+                        @csrf
                         <div class="form-group mb-30">
                             <label for="login-email"><i class="far fa-envelope"></i></label>
-                            <input type="text" id="login-email" placeholder="Email Address">
+                            <input type="email" id="login-email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter Email Address">
+
+                                          
                         </div>
+                         @error('email')
+                                            <p class="text-white bg-danger shadow-lg rounded-lg text-center">{{ $message }}</p>
+                                            @enderror
                         <div class="form-group">
                             <label for="login-pass"><i class="fas fa-lock"></i></label>
-                            <input type="password" id="login-pass" placeholder="Password">
+                            <input type="password" id="login-pass" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             <span class="pass-type"><i class="fas fa-eye"></i></span>
+
+                           
+                             </div>
+                               @error('password')
+                                            <p class="text-white bg-danger shadow-lg rounded-lg text-center">{{ $message }}</p>
+                                            @enderror
+                              <div class="form-group">
+                           <div class="custom-checkbox custom-control">
+                              <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                              <label for="remember" class="custom-control-label">Remember Me</label>
+                           </div>
                         </div>
-                        <div class="form-group">
-                            <a href="#0">Forgot Password?</a>
+                            <div class="form-group">
+                            <a href="{{ route('password.request') }}">Forgot Password?</a>
                         </div>
                         <div class="form-group mb-0">
                             <button type="submit" class="custom-button">LOG IN</button>
@@ -49,7 +66,7 @@
                     <div class="section-header mb-0">
                         <h3 class="title mt-0">NEW HERE?</h3>
                         <p>Sign up and create your Account</p>
-                        <a href="sign-up.html" class="custom-button transparent">Sign Up</a>
+                        <a href="{{ route('register') }}" class="custom-button transparent">Sign Up</a>
                     </div>
                 </div>
             </div>

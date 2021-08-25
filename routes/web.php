@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontendControllers\home\HomeController;
 use App\Http\Controllers\frontendControllers\livesearch\LiveSearchController;
 use App\Http\Controllers\frontendControllers\tenderdetailpage\TenderDetailController;
-
+use App\Http\Controllers\Auth\RegisterController;
 
 
 
@@ -275,10 +275,41 @@ Route::get('tenderdetail',[TenderDetailController::class,'index'])->name('tender
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/myhome', [HomeController::class, 'index'])->name('myhome');
+
+
+
+
+Route::middleware('auth')->group(function ()
+{
+
+
+// myaccount Index Route
 Route::get('dashboard',[App\Http\Controllers\frontendControllers\myaccount\DashboardController::class,'index'])->name('dashboard');
 
+Route::get('profile',[App\Http\Controllers\frontendControllers\myaccount\ProfileController::class,'index'])->name('profile');
 
+
+Route::get('myalerts',[App\Http\Controllers\frontendControllers\myaccount\MyalertsController::class,'index'])->name('myalerts');
+
+Route::get('bidWriter',[App\Http\Controllers\frontendControllers\myaccount\BidWriterController::class,'index'])->name('bidWriter');
+
+Route::get('subscription',[App\Http\Controllers\frontendControllers\myaccount\SubscriptionController::class,'index'])->name('frontsubscription');
+
+Route::get('whishlist',[App\Http\Controllers\frontendControllers\myaccount\WhishlistController::class,'index'])->name('whishlist');
+
+
+Route::get('whishlist',[App\Http\Controllers\frontendControllers\myaccount\WhishlistController::class,'index'])->name('whishlist');
+
+Route::get('recentallyview',[App\Http\Controllers\frontendControllers\myaccount\WhishlistController::class,'recentallyview'])->name('recentallyview');
+// myaccount Index Route End
+
+
+});
 Auth::routes();
+
+
+Route::post('/customize_register', [RegisterController::class, 'customize_register'])->name('customize_register');
+
 
 
 
