@@ -13,6 +13,17 @@ public function index()
 {
 return view('frontend.home.index');
 }
+
+
+public function pricing()
+{
+return view('frontend.pricing.pricing');
+}
+
+
+
+
+
 public function isArraycheck($obj){
 if (is_array($obj)) {
 return json_encode($obj);

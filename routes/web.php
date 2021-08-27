@@ -264,15 +264,24 @@ Route::post('/sendpassword', [DashboardController::class, 'sendpassword'])->name
 //// Front  Routes 
 
 
+ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
+ Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 
 Route::get('livesearch',[LiveSearchController::class,'index'])->name('livesearch');
 
+
 Route::get('historicalsearch',[LiveSearchController::class,'historicalSearch'])->name('historicalsearch');
 
+
 Route::get('tenderdetail',[TenderDetailController::class,'index'])->name('tenderdetail');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
 
 Route::get('/myhome', [HomeController::class, 'index'])->name('myhome');
 
@@ -286,7 +295,16 @@ Route::middleware('auth')->group(function ()
 // myaccount Index Route
 Route::get('dashboard',[App\Http\Controllers\frontendControllers\myaccount\DashboardController::class,'index'])->name('dashboard');
 
+Route::post('userSettings',[App\Http\Controllers\frontendControllers\myaccount\DashboardController::class,'userSettings'])->name('userSettings');
+
+
+
+
 Route::get('profile',[App\Http\Controllers\frontendControllers\myaccount\ProfileController::class,'index'])->name('profile');
+
+Route::post('UpdateUserFront',[App\Http\Controllers\frontendControllers\myaccount\ProfileController::class,'UpdateUserFront'])->name('UpdateUserFront');
+
+Route::post('UpdateUserProfilePic',[App\Http\Controllers\frontendControllers\myaccount\ProfileController::class,'UpdateUserProfilePic'])->name('UpdateUserProfilePic');
 
 
 Route::get('myalerts',[App\Http\Controllers\frontendControllers\myaccount\MyalertsController::class,'index'])->name('myalerts');

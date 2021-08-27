@@ -130,35 +130,9 @@
 
                                 </li>
 
-                                 <li>
+                               
 
-                                    <a href="signin.php">Sign In</a>
-
-                                </li>
-
-                                 <li>
-
-                                    <a href="signup.php">Sign Up</a>
-
-                                </li>
-
-                                 <li>
-
-                                    <a href="dashboard.php">Dashboard</a>
-
-                                </li>
-
-                                 <li>
-
-                                    <a href="profile.php">Profile</a>
-
-                                </li>
-
-                                <li>
-
-                                    <a href="{{route('tenderdetail')}}">Product Detail</a>
-
-                                </li>
+                        
 
                             </ul>
 
@@ -166,8 +140,51 @@
 
                          <li>
 
-                            <a href="pricing.php">Pricing</a>
+                            <a href="{{ route('pricing') }}">Pricing</a>
 
+                        </li>
+
+
+                         <li>
+
+                            <a href="#">My Account</a>
+                       <ul class="submenu">
+
+                                   @if (Auth::check())
+                           <li>
+
+                            <a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+
+                        </li>  
+                     
+                          @else
+
+
+                         <li>
+
+                            <a href="{{ route('dashboard') }}" >Profile </a>
+
+                        </li> 
+                        <li>
+
+                            <a href="{{ route('login') }}" >Sign In </a>
+
+                        </li>  
+
+                        <li>
+
+                            <a href="{{ route('register') }}" >Sign Up</a>
+
+                        </li>   
+
+                          @endif
+
+                               
+
+                        
+
+                            </ul>
                         </li>
 
                         

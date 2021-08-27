@@ -563,7 +563,7 @@ $('.progress-bar').css({'width':'100%'});
 $('#confirm').addClass('active');
 $('fieldset').hide();
 $('.conflast').show();
-
+ 
        var delayt = 2000; 
         var urlre =res.redirect
         setTimeout(function(){ window.location.href = urlre; }, delayt);

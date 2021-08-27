@@ -153,19 +153,26 @@ if ($request->package_id==1) {
     $usersubscriptionCount = usersubscription::where('user_id',$addUser->id);
     if ($usersubscriptionCount->count()>0) {
 
+
       $usersubscriptionCount->package_id=$request->package_id;
       $usersubscriptionCount->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscriptionCount->package_end_date=gmdate("Y-m-d H:i:s");
+      $usersubscriptionCount->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
       $usersubscriptionCount->save();  
        
+
+
     }else{
+
+
       $usersubscription = new usersubscription;
       $usersubscription->user_id=$addUser->id;
       $usersubscription->package_id=$request->package_id;
       $usersubscription->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscription->package_end_date=gmdate("Y-m-d H:i:s");
+      $usersubscription->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
       $usersubscription->save();
     
+
+
     }  
 
    }
@@ -213,9 +220,11 @@ if (!isset($token['id'])) {
  $charge = $stripe->charges()->create([
  'card' => $token['id'],
  'currency' => 'USD',
- 'amount' =>4,
+ 'amount' =>$request->package_price,
  'description' => 'Payment from contractfinderpro.infinitysol.co',
  ]);
+
+
   
  if($charge['status'] == 'succeeded') {
 
@@ -243,7 +252,19 @@ if (!isset($token['id'])) {
 
       $usersubscriptionCount->package_id=$request->package_id;
       $usersubscriptionCount->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscriptionCount->package_end_date=gmdate("Y-m-d H:i:s");
+      $usersubscriptionCount->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
+
+
+    $usersubscriptionCount->card_number=$request->card_number;
+
+    $usersubscriptionCount->card_cvc=$request->card_cvc;
+
+    $usersubscriptionCount->card_expiry_month=$request->card_expiry_month;
+
+    $usersubscriptionCount->card_expiry_year=$request->card_expiry_year;
+
+    $usersubscriptionCount->charg_id=$charge['id'];
+
       $usersubscriptionCount->save();  
        
     }else{
@@ -251,7 +272,18 @@ if (!isset($token['id'])) {
       $usersubscription->user_id=$addUser->id;
       $usersubscription->package_id=$request->package_id;
       $usersubscription->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscription->package_end_date=gmdate("Y-m-d H:i:s");
+      $usersubscription->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
+
+    $usersubscription->card_number=$request->card_number;
+
+    $usersubscription->card_cvc=$request->card_cvc;
+
+    $usersubscription->card_expiry_month=$request->card_expiry_month;
+
+    $usersubscription->card_expiry_year=$request->card_expiry_year;
+
+    $usersubscription->charg_id=$charge['id'];
+
       $usersubscription->save();
     
     }  
