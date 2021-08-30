@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/homesearchmain.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/pricingtable.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/multistepform.css')}}">
+    <link href="{{ asset('css/toaster.min.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{asset('frontend/images/favicon.png')}}" type="image/x-icon">

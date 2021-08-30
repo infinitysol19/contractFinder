@@ -82,5 +82,133 @@
  @include('include-frontend.footerHTML')
   
       @yield('footer')
+
+
+       <script type="text/javascript">
+  
+
+  jQuery(document).ready(function($) {
+      
+      
+
+$('.newsLetterSubscriber').click(function(e){
+
+e.preventDefault();
+
+$('.loader').show();
+
+var subsemail=$('#subsemail').val();
+
+
+
+function validateEmail(email) {
+
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    return re.test(String(email).toLowerCase());
+
+}
+
+
+
+if(!validateEmail(subsemail)){
+$('.loader').hide();
+toastr.options.closeButton = true;
+
+toastr.error('Please Enter A Valid Email Address', '', {timeOut: 3000});
+
+}
+
+
+
+var create_datetime=$('#create_datetimefooter').val();
+
+function isEmpty(val){
+
+return (val === undefined || val == null || val.length <= 0) ? true : false;
+
+}
+
+
+
+
+
+
+
+
+
+if(!isEmpty(subsemail)){
+
+// $("#subscriber_fromfront").submit()
+
+
+
+
+
+
+
+$.ajax({
+
+url:"{{ route('postSubscribeFront') }}",
+
+type:"POST",
+
+dataType:"json",
+
+data:{subsemail:subsemail,create_datetime:create_datetime,_token:"{{ csrf_token() }}"},
+
+success:function(res)
+
+{
+
+
+
+$(".loader").hide();
+
+$('.loader').hide();
+
+if(res.status=='ok'){
+
+toastr.options.closeButton = true;
+
+toastr.success('Subscription Verification Link has Been Sent To Your Email... Please Verify', '', {timeOut: 3000});
+
+}else if(res.status=='resend'){
+
+toastr.options.closeButton = true;
+
+toastr.success('Subscription Verification Link has Been Sent To Your Email... Please Verify', '', {timeOut: 3000});
+
+}else{
+
+toastr.options.closeButton = true;
+
+toastr.success('You Are Already Subscriber', '', {timeOut: 3000});
+
+}
+
+},
+
+error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+console.log("Status: " + textStatus); console.log("Error: " + errorThrown);console.log("Error: " + errorThrown);
+
+}
+
+});
+
+}else{
+$('.loader').hide();
+toastr.options.closeButton = true;
+
+toastr.error('Please Add Email Address For Subscription', '', {timeOut: 3000});
+
+}
+
+});
+
+
+  });
+    </script>
   </body>
 </html>

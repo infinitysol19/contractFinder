@@ -1,4 +1,60 @@
 <div class="col-lg-8">
+
+
+     <div class="dashboard-widget">
+        
+        <div class="dashboard-purchasing-tabs ">
+
+            <div class="row">
+
+      <div class="col-lg-6">
+
+        <h4 class="text-dark text-capitalize">My Bid Writing Quotes</h4>
+       <button class=" WritingQuotes btn btn-warning shadow-lg border-0 text-capitalize mt-2 rounded">request new Bid Writing Quotes</button>
+
+</div>
+
+ <div class="col-lg-6">
+<a href="{{ route('dashboard') }}" class="text-capitalize float-right"><i class="fa fa-bell" aria-hidden="true"></i> Mange NotiFications</a>
+    <div>
+
+</div>
+        </div>
+
+
+<div class="col-lg-12 mt-3 quotesButtontoggle" style="display:none;">
+    
+<form action="{{ route('bidWriterFrontPost') }}" method="post">
+
+
+@csrf
+
+<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+  <div class="form-group">
+    <label for="email">Link To Tender</label>
+    <input type="text" class="rounded" placeholder="Link To Tender"  required name="link_to_tendor">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Tender Value</label>
+    <input type="text" class="rounded" placeholder="Tendor Worth £"  required name="tender_worth">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Closing Date </label>
+    <input type="date" class="rounded" name="tender_colse_data" placeholder="Tender Closing Date" required>
+  </div>
+ 
+<div class="form-group">
+    <label for="email">Industry Sectors  </label>
+    <input type="text" class="rounded" placeholder="Industry Sectors e.g Health Social care" required name="tender_sector">
+  </div>
+  <button type="submit" class="btn btn-primary btnprimaryCustom rounded text-capitalize">request Quotes</button>
+</form>
+
+</div>
+    </div>
+        </div></div>
     <div class="auction-wrapper-5">
         <!-- horizontal Contract Post Card Starts -->
         <div class="auction-item-5 time">

@@ -18,7 +18,7 @@ $table->string('email')->unique();
 $table->string('first_name', 200 )->nullable();
 $table->string('last_name', 200 )->nullable();
 $table->text('image')->default('defultProfile.png');
-$table->json('setting')default('["daily_email_alerts_new","daily_email_alerts","time_sensitive_tenders_alerts","account_manager","bid_writing_advice"]'); 
+$table->json('setting')->default('["daily_email_alerts_new","daily_email_alerts","time_sensitive_tenders_alerts","account_manager","bid_writing_advice"]'); 
 $table->string('company', 300 )->nullable();
 $table->string('industry_sector', 300 )->nullable();
 $table->string('number_of_employees', 300 )->nullable();

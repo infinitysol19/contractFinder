@@ -70,13 +70,9 @@
 
                         </div>
 
-                        <form class="subscribe-form">
+                       {!! CH::NewsLetterSubscriber()!!}
 
-                            <input type="text" placeholder="Enter Your Email" name="email">
-
-                            <button type="submit" class="custom-button">Subscribe</button>
-
-                        </form>
+                       <div class="loader" style="display:none"></div>
 
                     </div>
 
@@ -347,5 +343,7 @@
         </div>
 
     </footer>
+
+   
 
     <!--============= Footer Section Ends Here =============-->

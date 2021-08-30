@@ -156,7 +156,7 @@ if ($request->package_id==1) {
 
       $usersubscriptionCount->package_id=$request->package_id;
       $usersubscriptionCount->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscriptionCount->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
+      $usersubscriptionCount->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."100 year"));
       $usersubscriptionCount->save();  
        
 
@@ -168,7 +168,7 @@ if ($request->package_id==1) {
       $usersubscription->user_id=$addUser->id;
       $usersubscription->package_id=$request->package_id;
       $usersubscription->package_start_date=gmdate("Y-m-d H:i:s");
-      $usersubscription->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."1 month"));
+      $usersubscription->package_end_date=date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s',strtotime(gmdate("Y-m-d H:i:s")))."100 year"));
       $usersubscription->save();
     
 
@@ -196,7 +196,7 @@ return response()->json(['status'=>'success','success'=>"Subscription Done Succe
 
 }else{
 
- $stripe = Stripe::setApiKey('sk_test_O4j2Hy7TORU5J5tgarfb2pnN00NK0Nq7Hi');
+ $stripe = Stripe::setApiKey(config('custom_env_Variables.STRIPE_SECRET'));
 
 
 try {

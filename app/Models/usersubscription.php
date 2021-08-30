@@ -18,4 +18,12 @@ class usersubscription extends Model
            'is_softdel',
 
         ];
+
+
+
+        public function getuserCurrentPackage(){
+
+ return $this->hasOne('App\Models\package','id','package_id');
+
+   }
 }

@@ -30,7 +30,7 @@
                     <form id="msform"  role="form"  method="post" class="require-validation"
                         data-cc-on-file="false"
                         data-stripe-publishable-key="pk_test_voEdyVqhHtKi93KlIwdfogH100LXcVgeza">
-                        @csrf 
+                        @csrf
                         <!-- progressbar -->
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>Account</strong></li>
@@ -344,13 +344,12 @@
                                 </div>
                                 
                                 <div class="customAlertpack alert alert-success bg-success text-white font-weight-bold shadow-lg border-0">Package: Basic</div>
-                              
+                                
                                 <div class="loader" style="position: relative;
-    right: 50%;
-    left: 50%; display:none;"></div>
+                                    right: 50%;
+                                left: 50%; display:none;"></div>
                                 <div class="customAlert alert alert-danger bg-danger text-white shadow-lg border-0" style="display:none"></div>
                                 <input type="button" name="next" class="action-button registerClick" value="Submit" />
-
                                 
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                             </fieldset>
@@ -437,32 +436,25 @@
     color:white !important;
     }
     </style>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+   
     
     <script type="text/javascript">
     $(document).ready(function() {
-
-
     $('.chooosePackage').click(function (e) {
     e.preventDefault();
-     
+    
     $("#package_id").val($(this).attr('package-id'));
     $("#package_price").val($(this).attr('packge-price'));
     $("#package_name").val($(this).attr('package-name'));
-
     $('.selectedpackage').hide();
-
     $(this).siblings('.selectedpackage').show();
-
     $('.customAlertpack').text('Package: '+$(this).attr('package-name'));
-
     if($(this).attr('package-id')!='1'){
-   
+    
     $('.showhidepayment').show();
     }else{
-$('.showhidepayment').hide();
+    $('.showhidepayment').hide();
     }
-
     });
     function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -489,7 +481,6 @@ $('.showhidepayment').hide();
     return (!str || str.length === 0 );
     }
     $('.registerClick').click(function (e) {
-
     $('.loader').show();
     e.preventDefault();
     let email=$("input[name=email]").val();
@@ -535,50 +526,41 @@ $('.showhidepayment').hide();
     _token:"{{ csrf_token() }}"},
     success:function(res)
     {
-   $('.loader').hide();
-        console.log(res);
+    $('.loader').hide();
+    console.log(res);
     if(res.status=='fail'){
-
-   $('.customAlert').show();
+    $('.customAlert').show();
     if(res.error){
-
-        var temp2=`<p>${res.error}</p>`;
-     $('.customAlert').html(temp2);
-
-  
+    var temp2=`<p>${res.error}</p>`;
+    $('.customAlert').html(temp2);
+    
     }else{
-
     var temp='';
     $.each(res.errors, function(key, value){
     
     temp+=`<p>${value}</p>`;
     });
     $('.customAlert').html(temp);
-}
+    }
     }else{
-
-
-
-$('.progress-bar').css({'width':'100%'});
-$('#confirm').addClass('active');
-$('fieldset').hide();
-$('.conflast').show();
- 
-       var delayt = 2000; 
-        var urlre =res.redirect
-        setTimeout(function(){ window.location.href = urlre; }, delayt);
-        
+    $('.progress-bar').css({'width':'100%'});
+    $('#confirm').addClass('active');
+    $('fieldset').hide();
+    $('.conflast').show();
+    
+    var delayt = 2000;
+    var urlre =res.redirect
+    setTimeout(function(){ window.location.href = urlre; }, delayt);
+    
     }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-        $('.loader').hide();
+    $('.loader').hide();
     console.log("Status: " + textStatus); console.log("Error: " + errorThrown);console.log("Error: " + errorThrown);
     }
     });
     });
     });
-
-
-   
+    
     </script>
     @endsection

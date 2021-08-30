@@ -12,6 +12,16 @@ class Request_Qoutes extends Model
     protected $table="request_qoutes";
 
 
+    protected $fillable= [
+    'user_id',
+    'link_to_tendor',
+    'tender_worth',
+    'tender_colse_data',
+    'tender_sector',
+
+];
+
+
    public function getuserFromRequestqoute(){
 
  return $this->hasOne('App\Models\User','id','user_id');

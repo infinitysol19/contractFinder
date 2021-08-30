@@ -106,6 +106,21 @@
               </div>
             </div>
 
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">STRIPE_KEY</label>
+              <div class="col-sm-12 col-md-10">
+              <input type="Text" name="STRIPE_KEY" class="form-control" value="{{ config('custom_env_Variables.STRIPE_KEY') }}" >
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">STRIPE_SECRET</label>
+              <div class="col-sm-12 col-md-10">
+              <input type="Text" name="STRIPE_SECRET" class="form-control" value="{{ config('custom_env_Variables.STRIPE_SECRET') }}" >
+              </div>
+            </div>
+
    
             <div class="collapse-box collapse show" id="basic-form1" style="">
             <div class="code-box">

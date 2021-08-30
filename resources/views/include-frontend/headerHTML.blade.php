@@ -114,7 +114,7 @@
 
                          <li>
 
-                            <a href="">Market Analysis</a>
+                            <a href="#">Market Analysis</a>
 
                             <ul class="submenu">
 
@@ -149,7 +149,11 @@
 
                             <a href="#">My Account</a>
                        <ul class="submenu">
+                             <li>
 
+                            <a href="{{ route('dashboard') }}" >Profile </a>
+
+                        </li> 
                                    @if (Auth::check())
                            <li>
 

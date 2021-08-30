@@ -22,6 +22,8 @@ use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\RequestQoutesController;
 use App\Http\Controllers\admin\Cpv_codesController;
+use App\Http\Controllers\admin\FrontSubscriberController;
+
 
 
 
@@ -214,14 +216,29 @@ Route::post('updatecpv_codes', [Cpv_codesController::class, 'updatecpv_codes'])-
 //////////////////// Cpv_codes End //////////////////////////////////////////////
 
 
+//////////////////// Subscriber Admin//////////////////////////////////////////////
+
+Route::get('/subscriber_admin',[FrontSubscriberController::class,'index'])->name('subscriber_admin');
+Route::get('/subscriber_admin_ajax',[FrontSubscriberController::class,'subscriber_admin_ajax'])->name('subscriber_admin_ajax');
+
+Route::get('/add_subscriber_admin', [FrontSubscriberController::class,'add_subscriber_admin'])->name('add_subscriber_admin');
+
+Route::post('/insert_subscriber_admin',[FrontSubscriberController::class,'insert_subscriber_admin'])->name('insert_subscriber_admin');
+
+Route::get('/edit_subscriber_admin{id}',[FrontSubscriberController::class,'edit_subscriber_admin'])->name('edit_subscriber_admin');
+Route::post('/update_subscriber_admin',[FrontSubscriberController::class,'update_subscriber_admin'])->name('update_subscriber_admin');
+Route::post('/delete_subscriber_admin_ajax',[FrontSubscriberController::class,'delete_subscriber_admin_ajax'])->name('delete_subscriber_admin_ajax');
 
 
+Route::post('/sendmail_subscriber_admin_ajax',[FrontSubscriberController::class,'sendmail_subscriber_admin_ajax'])->name('sendmail_subscriber_admin_ajax');
+
+Route::post('/postSubscribeFront',[FrontSubscriberController::class,'postSubscribeFront'])->name('postSubscribeFront');
+ 
+
+//////////////////// Subscriber Admin End //////////////////////////////////////////////
 
 
-
-
-
-
+ 
 
 
 //////////////////// settings //////////////////////////////////////////////
@@ -310,8 +327,12 @@ Route::post('UpdateUserProfilePic',[App\Http\Controllers\frontendControllers\mya
 Route::get('myalerts',[App\Http\Controllers\frontendControllers\myaccount\MyalertsController::class,'index'])->name('myalerts');
 
 Route::get('bidWriter',[App\Http\Controllers\frontendControllers\myaccount\BidWriterController::class,'index'])->name('bidWriter');
+Route::post('bidWriterFrontPost',[App\Http\Controllers\frontendControllers\myaccount\BidWriterController::class,'bidWriterFrontPost'])->name('bidWriterFrontPost');
 
 Route::get('subscription',[App\Http\Controllers\frontendControllers\myaccount\SubscriptionController::class,'index'])->name('frontsubscription');
+
+Route::post('changesubscription',[App\Http\Controllers\frontendControllers\myaccount\SubscriptionController::class,'changesubscription'])->name('changesubscription');
+
 
 Route::get('whishlist',[App\Http\Controllers\frontendControllers\myaccount\WhishlistController::class,'index'])->name('whishlist');
 
@@ -327,6 +348,8 @@ Auth::routes();
 
 
 Route::post('/customize_register', [RegisterController::class, 'customize_register'])->name('customize_register');
+
+Route::get('/doneSubscription/{email}',[FrontSubscriberController::class,'doneSubscription'])->name('doneSubscription');
 
 
 

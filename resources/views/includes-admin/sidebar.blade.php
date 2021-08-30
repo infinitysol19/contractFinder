@@ -62,6 +62,9 @@
               <span class="micon dw dw-calendar1"></span><span class="mtext">Packages</span>
             </a>
           </li>
+  
+
+
           <li >
             <a href="{{route('permissions')}}" class="dropdown-toggle no-arrow">
               <span class="micon dw dw-apartment"></span><span class="mtext"> Permissions </span>
@@ -74,6 +77,12 @@
               <span class="micon dw dw-apartment"></span><span class="mtext"> CountryMockup </span>
             </a>
            
+          </li>
+
+           <li>
+            <a href="{{route('subscriber_admin')}}" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-calendar1"></span><span class="mtext">Subscriber</span>
+            </a>
           </li>
           {{-- <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">

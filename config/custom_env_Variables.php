@@ -27,7 +27,10 @@ return [
     'SITE_LOGO_FOOTER'=>env('SITE_LOGO_FOOTER'), 
 
     'APP_NAME'=>env('APP_NAME'),
+   
+   'STRIPE_KEY'=>env('STRIPE_KEY'),
 
+   'STRIPE_SECRET'=>env('STRIPE_SECRET'),
     
 
   
