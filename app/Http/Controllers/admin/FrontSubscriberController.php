@@ -8,7 +8,6 @@ use DB;
 use Auth;
 use DataTables; 
 use App\Models\Subscriber; 
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use CH;

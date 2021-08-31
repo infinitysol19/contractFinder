@@ -88,9 +88,28 @@
 
            <li>
             <a href="{{route('subscriber_admin')}}" class="dropdown-toggle no-arrow">
-              <span class="micon dw dw-calendar1"></span><span class="mtext">Subscriber</span>
+              <span class="micon dw dw-calendar1"></span><span class="mtext">Subscriber
+
+           <span class="badge badge-danger">
+                  
+                  {{ App\Models\Subscriber::where('status','off')->where('is_softdel','no')->count() }}
+                </span>
+              </span>
             </a>
           </li>
+             <li>
+            <a href="{{route('contact_admin')}}" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-calendar1"></span><span class="mtext">Contact us
+
+
+
+           <span class="badge badge-danger">
+                  
+                  {{ App\Models\Contacts::where('status','off')->where('is_softdel','no')->count() }}
+                </span></span>
+            </a>
+          </li>
+
           {{-- <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-paint-brush"></span><span class="mtext">Icons</span>

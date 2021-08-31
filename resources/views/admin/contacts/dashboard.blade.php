@@ -1,13 +1,12 @@
-{{-- extend  --}}
 @extends('admin-layout.app')
 @extends('includes-admin.header')
 @extends('includes-admin.footer')
 @extends('includes-admin.sidebar')
 {{-- page titles --}}
-@section('title', 'News Blog') 
+@section('title', 'Api Data')
 @section('content')
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="main-container">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"> All Conatct Record</h1>
@@ -18,34 +17,14 @@
     
     <div class="card-body">
  
-      <form id="myform">
-       <div class="row input-daterange">
-        <div class="col-md-3">
-          <input type="text" name="from_date" id="date_timepicker_start" class="form-control" placeholder="Start Date Time" readonly />
+    
+      <div class="row input-daterange">
+        <div class="col-md-6">
+          <button type="button" name="refresh" id="refresh" class="btn btn-danger btn-block btn-block btn-sm shadow-lg border-0">Reset</button>
         </div>
-        <div class="col-md-3">
-          <input type="text" name="to_date" id="date_timepicker_end" class="form-control" placeholder="End Date Time" readonly />
-        </div>
-     
-          <div class="col-md-2">
-          
-          <select name="status" class="form-control" id="status">
-                 <option  selected="">Is Read</option>
-                <option value="on" >yes</option>
-                <option value="off">No</option>
-            
-            </select>
-        </div>
-        </form>
-        <div class="col-md-2">
-          <button type="button" name="filter" id="filter" class="btn btn-primary btn-block btn-block btn-sm shadow-lg border-0">Filter</button>
-        </div>
-        <div class="col-md-2">
-          <button type="button" name="refresh" id="refresh" class="btn btn-danger btn-block btn-block btn-sm shadow-lg border-0"><i class="fas fa-sync-alt"></i></button>
-        </div>
-      </div>
-        <div class="row input-daterange">
-           <div class="col-md-12 pt-3 pb-1">
+   
+        
+           <div class="col-md-6 ">
        <button type="button" class="btn-block shadow-lg border-0 btn-success btn-sm sendmail" > Send Email</button>
          </div >
         </div>
@@ -118,8 +97,7 @@
 @endsection
 @section("footer")
 @parent
-<!-- DataTables JavaScript -->
-<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/scripts/sweetalert.min.js') }}"></script>
 <link href="{{ asset('css/toaster.min.css') }}" rel="stylesheet">
 <script src="{{ asset('js/toaster.min.js') }}"></script>
 <script type="text/javascript">
@@ -250,38 +228,17 @@ swal("Your Record is safe!");
 }
 })
 });
-// $('#dataTableAuction').DataTable({
-// responsive: true
-// });
-// $('[data-toggle="tooltip"]').tooltip();
-$('#date_timepicker_start').datetimepicker({
-format:'Y-m-d H:i:s',
-//mask:true,
-onShow:function( ct ){
-this.setOptions({
-maxDate:jQuery('#date_timepicker_end').val()?jQuery('#date_timepicker_end').val():false
-})
-},
-timepicker:true
-});
-$('#date_timepicker_end').datetimepicker({
-format:'Y-m-d H:i:s',
-//mask:true,
-onShow:function( ct ){
-this.setOptions({
-minDate:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
-})
-},
-timepicker:true
-});
+
 function load_data(from_date = '', to_date = '',status=''){
 
 
 
 $('#dataTableAuction').DataTable({
-processing: true,
-serverSide: true,
-responsive: true,
+'scrollCollapse': true,
+'autoWidth': false,
+'responsive': true,
+'processing': true,
+'serverSide': true,
 ajax:{
 url: "{{ route('contact_admin_ajax') }}",
 data:{from_date:from_date, to_date:to_date,status:status}
@@ -318,7 +275,7 @@ data: 'create_datetime',
 name: 'created_date',
 searchable: true,
 render: function(data, type, full, meta){
-return convertUTCDateToLocalDate(new Date(data));
+return data;
 },
 },
 
@@ -363,11 +320,8 @@ toastr.error('Please Fill All Fields Of Filter', '', {timeOut: 3000});
 });
 $('#refresh').click(function(){
 
-  document.getElementById("myform").reset();
-//  $('#date_timepicker_start').val('');
-//  $('#date_timepicker_end').val('');
-// $('#status').val('');
-// $('#post_type').val('');
+ 
+;
 
 $('#dataTableAuction').DataTable().destroy();
 load_data();

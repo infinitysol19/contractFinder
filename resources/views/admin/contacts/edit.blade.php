@@ -1,13 +1,12 @@
-{{-- extend  --}}
 @extends('admin-layout.app')
 @extends('includes-admin.header')
 @extends('includes-admin.footer')
 @extends('includes-admin.sidebar')
 {{-- page titles --}}
-@section('title', 'Edit Auction')
+@section('title', 'Api Data')
 @section('content')
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="main-container">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"> Edit Contact</h1>
@@ -53,7 +52,7 @@
 
    <div class="form-group">
       <div class="form-group"><label for="username"><strong>Created Date</strong></label>
-      <input class="form-control " type="text" name="create_datetime" id="date_timepicker_start" value="{{CH::GetCilentDatetime($conatct->create_datetime ) }}">
+      <input class="form-control datetimepicker" type="text" name="create_datetime" id="date_timepicker_start" value="{{$conatct->create_datetime  }}">
     </div>
   </div>
 
@@ -110,28 +109,7 @@ height: 300,
 filebrowserUploadUrl: "upload.php"
 });
 
-jQuery(function(){
-jQuery('#date_timepicker_start').datetimepicker({
-  format:'Y-m-d H:i:s',
 
-onShow:function( ct ){
-this.setOptions({
-maxDate:jQuery('#date_timepicker_end').val()?jQuery('#date_timepicker_end').val():false
-}) 
-},
-timepicker:true
-});
-jQuery('#date_timepicker_end').datetimepicker({
- format:'Y-m-d H:i:s',
-
-onShow:function( ct ){
-this.setOptions({
-minDate:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
-})
-},
-timepicker:true
-});
-});
 
 $(document).ready(function(){
   function convertToSlug(Text)

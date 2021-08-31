@@ -8,6 +8,7 @@ use\App\Models\News;
 use DB;
 use Auth;
 use DataTables; 
+use Mail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use CH;

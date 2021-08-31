@@ -4,7 +4,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use CH;
-use Illuminate\Support\Facades\DB;
+use Mail;
+use DB;
+use Auth;
+use DataTables; 
+use Illuminate\Support\Facades\Crypt;
+use App\Models\Contacts; 
 Use App\Models\apidata;
 class HomeController extends Controller
 {
@@ -19,6 +24,62 @@ public function pricing()
 {
 return view('frontend.pricing.pricing');
 }
+
+
+
+public function contact()
+{
+return view('frontend.contact.contact');
+}
+
+public function privacy()
+{
+return view('frontend.privacy.privacy');
+}
+
+
+
+
+ public function postContactFront(Request $request){
+
+        
+ 
+          
+     
+        
+        
+           $request->validate(
+            [
+                'email' =>'required','create_datetime' => 'required','is_agree' => 'required','name' => 'required' ,'subject' => 'required',
+            ]
+        );
+
+           
+            $insert = Contacts::create(
+                [
+                    'email' => $request->email,'description' => $request->description, 'create_datetime' =>date("Y-m-d H:i:s", strtotime($request->create_datetime)),'status' =>'off','phone' =>$request->phone,'is_agree' =>$request->is_agree,'name' =>$request->name,'subject' =>$request->subject
+                ]
+            );
+
+            if ($insert) {
+   
+          // $to_name =config('custom_env_Variables.MAIL_FROM_NAME');
+          // $to_email =config('custom_env_Variables.MAIL_TO_CONTACT');
+          // $data = array('name'=>$request->name, "email" =>$request->email,"body" =>$request->description, "phone" =>$request->phone,'subject'=>$request->subject,'app_url'=>config('custom_env_Variables.APP_URL'),'logo'=>asset('img').'/'.config('custom_env_Variables.SITE_LOGO'));
+          
+          // Mail::send('emails.contact', $data, function($message) use ($to_name, $to_email,$request) {
+          // $message->to($to_email, $to_name) 
+          //   ->subject($request->subject);
+          // $message->from( config('custom_env_Variables.MAIL_FROM_ADDRESS'),config('custom_env_Variables.MAIL_FROM_NAME'));
+          //  });
+
+
+
+                return redirect()->back()
+                    ->with('message', 'Email Send SuccessFully...!');
+            }
+
+    }
 
 
 

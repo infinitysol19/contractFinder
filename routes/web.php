@@ -24,6 +24,8 @@ use App\Http\Controllers\admin\RequestQoutesController;
 use App\Http\Controllers\admin\Cpv_codesController;
 use App\Http\Controllers\admin\FrontSubscriberController;
 use App\Http\Controllers\admin\FrontNewsController;
+use App\Http\Controllers\admin\ContactusController;
+
 
 
 //Hasnain's Code Ends's
@@ -239,9 +241,26 @@ Route::post('/deletenews_admin_ajax',[FrontNewsController::class, 'delete_news_a
  
 
 //////////////////////////////////   blog news end///////////////////////////
+// ContactusController
 
+/*
+*
+*Contact
+*
+*/
+Route::get('/contact_admin',[ContactusController::class, 'index'])->name('contact_admin');
 
+Route::get('/contact_admin_ajax',[ContactusController::class, 'contact_admin_ajax'])->name('contact_admin_ajax');
 
+Route::get('/add_contact_admin',[ContactusController::class, 'add_contact_admin'])->name('add_contact_admin');
+
+Route::post('/insert_contact_admin',[ContactusController::class, 'insert_contact_admin'])->name('insert_contact_admin');
+
+Route::get('/edit_contact_admin{id}',[ContactusController::class, 'edit_contact_admin'])->name('edit_contact_admin');
+
+Route::post('/update_contact_admin',[ContactusController::class, 'update_contact_admin'])->name('update_contact_admin');
+
+Route::post('/delete_contact_admin_ajax',[ContactusController::class, 'delete_contact_admin_ajax'])->name('delete_contact_admin_ajax');
 
 
 
@@ -318,6 +337,14 @@ Route::post('/sendpassword', [DashboardController::class, 'sendpassword'])->name
 
  Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
 
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::post('/postContactFront', [HomeController::class, 'postContactFront'])->name('postContactFront');
+
+
+Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy');
+ 
+
 Route::get('livesearch',[LiveSearchController::class,'index'])->name('livesearch');
 
 
@@ -387,6 +414,7 @@ Route::get('/blog',[FrontNewsController::class, 'blog'])->name('blog');
 
 
 Route::get('/blog/{slug}',[FrontNewsController::class, 'blogsingle'])->name('blogsingle');
+
 
 
 

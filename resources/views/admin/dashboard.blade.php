@@ -79,6 +79,66 @@
           </div>
         </div>
       </div>
+
+
+      <div class="col-xl-4 col-lg-4 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">
+                @php
+                echo \App\Models\News::count();
+               @endphp
+              </div>
+              <div class="font-14 text-secondary weight-500">Blogs</div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon"><i class="icon-copy dw dw-calendar1" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="col-xl-4 col-lg-4 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">
+                @php
+                echo \App\Models\Subscriber::count();
+               @endphp
+              </div>
+              <div class="font-14 text-secondary weight-500">Subscriber</div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon"><i class="icon-copy dw dw-calendar1" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-xl-4 col-lg-4 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+          <div class="d-flex flex-wrap">
+            <div class="widget-data">
+              <div class="weight-700 font-24 text-dark">
+                @php
+                echo \App\Models\Contacts::count();
+               @endphp
+              </div>
+              <div class="font-14 text-secondary weight-500">Contacts</div>
+            </div>
+            <div class="widget-icon">
+              <div class="icon"><i class="icon-copy dw dw-calendar1" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
      
     </div>
     
