@@ -17,7 +17,7 @@
       
       <div class="pd-20">
         <h4 class="text-blue h4">Packages
-        <a href="{{route('addpackageview')}}" class="btn btn-success btn-sm shadow-sm border-0  float-right">Add <span class="icon-copy ti-plus"></span></a>
+      {{--   <a href="{{route('addpackageview')}}" class="btn btn-success btn-sm shadow-sm border-0  float-right">Add <span class="icon-copy ti-plus"></span></a> --}}
         </h4>
         
       </div>

@@ -35,11 +35,12 @@ return  '<div class="dropdown">
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
         
         <a class="dropdown-item" href="'.route('packageedit',['id'=>$query->id]).'"><i class="dw dw-edit2"></i> Edit</a>
-        <a class="dropdown-item deleteItem" href="#" del-id="'.$query->id.'"><i class="dw dw-delete-3"></i> Delete</a>
+        
     </div>
 </div>';
 })->toJson();
 }
+// <a class="dropdown-item deleteItem" href="#" del-id="'.$query->id.'"><i class="dw dw-delete-3"></i> Delete</a>
 // <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
 public function packageedit($id)
 {

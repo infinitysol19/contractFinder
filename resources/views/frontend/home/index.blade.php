@@ -3,13 +3,18 @@
 @extends('include-frontend.header')
 @extends('include-frontend.footer')
 
-  
+@section('seo_content')
 
+@php
+$dataseo=\App\Models\Settings::first();
+@endphp
+{!!$dataseo->home_meta!!}
+@endsection
 @section('content')
 
     <!--============= Banner Section Starts Here =============-->
 
-    <section class="banner-section-2 bg_img" data-background="{{asset('frontend/images/banner/banner-bg-2.png')}}">
+    <section class="banner-section-2 bg_img" data-background="{{asset('frontend/images/landing-hero-background.jpg')}}">
 
         <div class="container mt-5">
 
@@ -19,15 +24,15 @@
 
                     <div class="banner-content cl-white">
 
-                        <h6 class="title">Welcome to Contract Finder Alerts</h6>
+                        <h6 class="title">{!! $dataseo->home_banner_h1 !!}</h6>
 
-                        <h4 class="cate">The Most Popular Free Contract Finder</h4>
+                        <h4 class="cate">{!! $dataseo->home_banner_p !!}</h4>
 
                         <!-- <h6 class="cate">What We Do</h6> -->
 
                         <p>
 
-                           Identify public sector contract opportunities. Keep you up to date with the latest tenders. Deliver tailored public sector market analysis.
+                       {!! $dataseo->home_banner_p2 !!}
 
                         </p>
 
@@ -41,186 +46,8 @@
 
 
 
-          <!-- <div class="s010">
-
-      <form>
-
-        <div class="inner-form">
-
-          <div class="basic-search">
-
-            <div class="input-field">
-
-              <input id="search" type="text" placeholder="Type Keywords" />
-
-              <div class="icon-wrap">
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-
-                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-
-                </svg>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="advance-search">
-
-            <span class="desc">ADVANCED SEARCH</span>
-
-            <div class="row">
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Accessories</option>
-
-                    <option>Subject b</option>
-
-                    <option>Subject c</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Color</option>
-
-                    <option>Subject b</option>
-
-                    <option>Subject c</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Size</option>
-
-                    <option>Subject b</option>
-
-                    <option>Subject c</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="row second">
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Sale</option>
-
-                    <option>Subject b</option>
-
-                    <option>Subject c</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Time</option>
-
-                    <option>Last time</option>
-
-                    <option>Today</option>
-
-                    <option>This week</option>
-
-                    <option>This month</option>
-
-                    <option>This year</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-              <div class="input-field">
-
-                <div class="input-select">
-
-                  <select data-trigger="" name="choices-single-defaul">
-
-                    <option placeholder="" value="">Type</option>
-
-                    <option>Subject b</option>
-
-                    <option>Subject c</option>
-
-                  </select>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="row third">
-
-              <div class="input-field">
-
-                <div class="result-count">
-
-                  <span>108 </span>results</div>
-
-                <div class="group-btn">
-
-                  <button class="btn-delete" id="delete">RESET</button>
-
-                  <button class="btn-search">SEARCH</button>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </form>
-
-    </div> -->
-
+      
+          
 
 
     
@@ -241,7 +68,7 @@
 
         <div class="banner-shape-2 d-none d-lg-block">
 
-            <img src="{{asset('frontend/css/img/banner-shape-2.png')}}" alt="css">
+           {{--  <img src="{{asset('frontend/css/img/banner-shape-2.png')}}" alt="css"> --}}
 
         </div>
 
@@ -260,7 +87,7 @@
 
                 <div class="left">
 
-                    <h4 class="title cl-white cl-lg-black pl-0 pt-5">CONTRACT CATEGORIES</h4>
+                    <h4 class="title cl-white cl-lg-black pl-0 pt-5 mt-5">CONTRACT CATEGORIES</h4>
 
                 </div>
 

@@ -11,7 +11,7 @@
                  
                </div>
         </div>
-        <div class="bg_img hero-bg bottom_center" data-background="{{ asset('frontend/images/banner/hero-bg.png') }}" style="background:url({{ asset('frontend/images/banner/hero-bg.png') }});"></div>
+        <div class="bg_img hero-bg bottom_center" data-background="{{asset('frontend/images/landing-hero-background.jpg')}}" style="background:url({{asset('frontend/images/landing-hero-background.jpg')}});"></div>
     </div>
     <!--============= Hero Section Ends Here =============-->
   <!--============= Dashboard Section Starts Here =============-->

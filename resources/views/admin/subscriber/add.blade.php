@@ -66,28 +66,7 @@ height: 300,
 filebrowserUploadUrl: "upload.php"
 });
 
-jQuery(function(){
-jQuery('#date_timepicker_start').datetimepicker({
-  format:'Y-m-d H:i:s',
 
-onShow:function( ct ){
-this.setOptions({
-maxDate:jQuery('#date_timepicker_end').val()?jQuery('#date_timepicker_end').val():false
-}) 
-},
-timepicker:true
-});
-jQuery('#date_timepicker_end').datetimepicker({
- format:'Y-m-d H:i:s',
-
-onShow:function( ct ){
-this.setOptions({
-minDate:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
-})
-},
-timepicker:true
-});
-});
 
 $(document).ready(function(){
   function convertToSlug(Text)

@@ -84,9 +84,9 @@
 
                     <div class="logo">
 
-                        <a href="{{route('myhome')}}">
+                        <a href="{{route('home')}}">
 
-                            <img src="{{asset('frontend/images/logo/2.png')}}" alt="logo">
+                            <img src="{{ asset('admin/vender/images') }}/{{ config('custom_env_Variables.SITE_LOGO') }}" alt="logo">
 
                         </a>
 
@@ -96,7 +96,7 @@
 
                         <li>
 
-                            <a href="{{route('livesearch')}}">Advice andp Tips</a>
+                            <a href="{{route('blog')}}">Advice andp Tips</a>
 
                         </li>
 
@@ -151,7 +151,7 @@
                        <ul class="submenu">
                              <li>
 
-                            <a href="{{ route('dashboard') }}" >Profile </a>
+                            <a href="{{ route('dashboard') }}" >My Account </a>
 
                         </li> 
                                    @if (Auth::check())
@@ -165,11 +165,7 @@
                           @else
 
 
-                         <li>
-
-                            <a href="{{ route('dashboard') }}" >Profile </a>
-
-                        </li> 
+                        
                         <li>
 
                             <a href="{{ route('login') }}" >Sign In </a>

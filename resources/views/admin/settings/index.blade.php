@@ -121,7 +121,41 @@
               </div>
             </div>
 
-   
+
+
+            <h1 class="text-capitalize text-danger">Seo Section Pages</h1>
+         @php
+
+$seopages=['home_meta',
+'blog_meta',
+'contact_meta',
+'livesearch_meta',
+'historicalsearch_meta',
+'pricing_meta',
+'login_meta',
+'register_meta',
+'myaccount_meta',
+'single_page_tendor_meta',
+'single_page_blog_meta',
+'competitors_meta',
+'buyer_behaviour_analysis_meta'];
+
+
+         @endphp
+
+
+
+         @foreach ($seopages as $pages)
+        
+
+               <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">{{ $pages }}</label>
+              <div class="col-sm-12 col-md-10">
+               <textarea name="{{ $pages }}" class="form-control">{{$settings->$pages  }}</textarea>
+              </div>
+            </div>
+
+         @endforeach
             <div class="collapse-box collapse show" id="basic-form1" style="">
             <div class="code-box">
               <div class="clearfix">

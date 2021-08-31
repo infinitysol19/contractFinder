@@ -1,57 +1,42 @@
-{{-- <!DOCTYPE html>
-
-<html lang="en">
-
-<!-- Mirrored from pixner.net/sbidu/main/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jul 2021 09:21:55 GMT -->
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>@yield('title')</title>
-    @yield('header')
-
-</head>
-
-<body>
-
-  @include('include-frontend.headerHTML') 
-  @yield('content')
-  @include('include-frontend.footerHTML')
-  @yield('footer')
- 
-</body>
-
-
-<!-- Mirrored from pixner.net/sbidu/main/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jul 2021 09:22:00 GMT -->
-
-</html> --}}
-
-
-
-
-
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-    
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="src/images/logo-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="src/images/logo-icon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="src/images/logo-icon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    
+    @yield('seo_content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
+   
     {{-- include all css files and meta tags --}}
     @yield('header')
     <!-- Scripts -->
  <style>
+
+ .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #693FF5;
+    border-color:#693FF5;
+}
+ .pagination li a {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+     width: 100%; 
+    height: 100%; 
+   line-height: initial;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #693FF5;
+    box-shadow: 0px 15px 30px 0px rgb(119 123 146 / 10%);
+    color: #52606d;
+    font-weight: 700;
+
+  }
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;

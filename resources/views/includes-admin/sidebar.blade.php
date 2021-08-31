@@ -32,6 +32,13 @@
             </a>
            
           </li>
+
+               <li >
+            <a href="{{route('getallnews_admin')}}" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-edit2"></span><span class="mtext">Blogs</span>
+            </a>
+           
+          </li>
            <li >
             <a href="{{route('req_qoutes')}}" class="dropdown-toggle no-arrow">
               <span class="micon dw dw-edit2"></span><span class="mtext">Request Qoutes

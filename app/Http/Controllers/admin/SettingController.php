@@ -50,12 +50,45 @@ class SettingController extends Controller
         
         if ($settings->count()>0) {
             
-    $settings->update(['home_banner_h1'=>$request->home_banner_h1,'home_banner_p'=>$request->home_banner_p,'home_banner_p2'=>$request->home_banner_p2]);
+    $settings->update(['home_banner_h1'=>$request->home_banner_h1,'home_banner_p'=>$request->home_banner_p,'home_banner_p2'=>$request->home_banner_p2,
+ 
+ 
+'home_meta'=>$request->home_meta,
+'blog_meta'=>$request->blog_meta,
+'contact_meta'=>$request->contact_meta,
+'livesearch_meta'=>$request->livesearch_meta,
+'historicalsearch_meta'=>$request->historicalsearch_meta,
+'pricing_meta'=>$request->pricing_meta,
+'login_meta'=>$request->login_meta,
+'register_meta'=>$request->register_meta,
+'myaccount_meta'=>$request->myaccount_meta,
+'single_page_tendor_meta'=>$request->single_page_tendor_meta,
+'single_page_blog_meta'=>$request->single_page_blog_meta,
+'competitors_meta'=>$request->competitors_meta,
+'buyer_behaviour_analysis_meta'=>$request->competitors_meta,
+]);
 
         }else{
        
 
-        DB::table('settings')->insert(['home_banner_h1'=>$request->home_banner_h1,'home_banner_p'=>$request->home_banner_p,'home_banner_p2'=>$request->home_banner_p2]);
+        DB::table('settings')->insert(['home_banner_h1'=>$request->home_banner_h1,'home_banner_p'=>$request->home_banner_p,'home_banner_p2'=>$request->home_banner_p2,
+'home_meta'=>$request->home_meta,
+'blog_meta'=>$request->blog_meta,
+'contact_meta'=>$request->contact_meta,
+'livesearch_meta'=>$request->livesearch_meta,
+'historicalsearch_meta'=>$request->historicalsearch_meta,
+'pricing_meta'=>$request->pricing_meta,
+'login_meta'=>$request->login_meta,
+'register_meta'=>$request->register_meta,
+'myaccount_meta'=>$request->myaccount_meta,
+'single_page_tendor_meta'=>$request->single_page_tendor_meta,
+'single_page_blog_meta'=>$request->single_page_blog_meta,
+'competitors_meta'=>$request->competitors_meta,
+'buyer_behaviour_analysis_meta'=>$request->competitors_meta,
+    ]);
+
+
+
 
         }
 

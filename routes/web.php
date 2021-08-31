@@ -23,8 +23,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\RequestQoutesController;
 use App\Http\Controllers\admin\Cpv_codesController;
 use App\Http\Controllers\admin\FrontSubscriberController;
-
-
+use App\Http\Controllers\admin\FrontNewsController;
 
 
 //Hasnain's Code Ends's
@@ -216,6 +215,39 @@ Route::post('updatecpv_codes', [Cpv_codesController::class, 'updatecpv_codes'])-
 //////////////////// Cpv_codes End //////////////////////////////////////////////
 
 
+/////////////////////////// Blog news ///////////////////////////////////////////
+
+Route::get('/getallnews_admin',[FrontNewsController::class, 'index'])->name('getallnews_admin');
+
+Route::get('/getallnews_admin_ajax',[FrontNewsController::class, 'getall_news_ajax'])->name('getallnews_admin_ajax');
+
+
+Route::get('/addnews_admin',[FrontNewsController::class, 'addnew'])->name('addnews_admin');
+
+Route::post('/insertnews_admin',[FrontNewsController::class, 'insert_news'])->name('insertnews_admin');
+
+Route::get('/editnews_admin{id}',[FrontNewsController::class, 'edit_news'])->name('editnews_admin');
+
+Route::post('/updatenews_admin',[FrontNewsController::class, 'update_news'])->name('updatenews_admin');
+
+Route::post('/deletenews_admin_ajax',[FrontNewsController::class, 'delete_news_ajax'])->name('deletenews_admin_ajax');
+
+
+
+
+
+ 
+
+//////////////////////////////////   blog news end///////////////////////////
+
+
+
+
+
+
+
+
+
 //////////////////// Subscriber Admin//////////////////////////////////////////////
 
 Route::get('/subscriber_admin',[FrontSubscriberController::class,'index'])->name('subscriber_admin');
@@ -351,6 +383,10 @@ Route::post('/customize_register', [RegisterController::class, 'customize_regist
 
 Route::get('/doneSubscription/{email}',[FrontSubscriberController::class,'doneSubscription'])->name('doneSubscription');
 
+Route::get('/blog',[FrontNewsController::class, 'blog'])->name('blog');
+
+
+Route::get('/blog/{slug}',[FrontNewsController::class, 'blogsingle'])->name('blogsingle');
 
 
 

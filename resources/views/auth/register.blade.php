@@ -1,6 +1,13 @@
 @extends('layout-frontend/app')
 @extends('include-frontend.header')
 @extends('include-frontend.footer')
+@section('seo_content')
+
+@php
+$dataseo=\App\Models\Settings::first();
+@endphp
+{!!$dataseo->register_meta!!}
+@endsection
 @section('content')
 <!--============= Hero Section Starts Here =============-->
 <div class="hero-section style-2 pb-lg-400">
@@ -9,7 +16,7 @@
             
         </div>
     </div>
-    <div class="bg_img hero-bg bottom_center" data-background="{{ asset('frontend/images/banner/hero-bg.png') }}" style="background:url({{ asset('frontend/images/banner/hero-bg.png') }});"></div>
+    <div class="bg_img hero-bg bottom_center" data-background="{{asset('frontend/images/landing-hero-background.jpg')}}" ></div>
 </div>
 <!--============= Hero Section Ends Here =============-->
 <!--============= Dashboard Section Starts Here =============-->

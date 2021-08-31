@@ -300,7 +300,7 @@
 
                         <div class="logo">
 
-                            <a href="index-2.html"><img src="{{asset('frontend/images/logo/logo3.svg')}}" alt="logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('admin/vender/images') }}/{{ config('custom_env_Variables.SITE_LOGO_FOOTER') }}" alt="logo" style="width: 150px;"></a>
 
                         </div>
 

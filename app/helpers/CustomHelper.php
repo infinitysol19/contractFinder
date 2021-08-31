@@ -23,4 +23,12 @@ public function NewsLetterSubscriber()
 
 
 
+
+
+
+
+
+
+
+
 }
