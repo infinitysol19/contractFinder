@@ -36,9 +36,10 @@ $dataseo=\App\Models\Settings::first();
 
 
 
+   
 
-
-        @include('include-frontend.searchbox');
+        @include('include-frontend.searchbox',$data=[
+        'historicalsearch' =>true,'sidenty'=>true]);
 
 
 
@@ -54,8 +55,7 @@ $dataseo=\App\Models\Settings::first();
 
         <div class="banner-shape-2 d-none d-lg-block">
 
-          {{--   <img src="{{asset('frontend/css/img/banner-shape-2.png')}}" alt="css"> --}}
-
+        
         </div>
 
     </section>
@@ -69,18 +69,6 @@ $dataseo=\App\Models\Settings::first();
     <!--============= Upcoming Auction Section Starts Here =============-->
 
     <section class="upcoming-auction padding-bottom-searchpage">
-
-  <!--       <div class="container">
-
-            <div class="section-header">
-
-                <h3 class="title">ALL CONTRACTS</h3>
-
-           
-
-            </div>
-
-        </div> -->
 
         <div class="container">
 
@@ -101,5 +89,11 @@ $dataseo=\App\Models\Settings::first();
 
     <!--============= Upcoming Auction Section Ends Here =============-->
 
+
+@endsection
+
+@section("footer")
+@parent
+ @include('include-frontend.searchDependency');
 
 @endsection

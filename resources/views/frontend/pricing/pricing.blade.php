@@ -43,14 +43,14 @@ $dataseo=\App\Models\Settings::first();
                                         @endphp
                                         @foreach ($allPackages as $allPackage)
                                         
-                                        @if ($allPackage->name=='Basic')
+                                        @if ($allPackage->id==1)
                                         {{-- expr --}}
                                         
                                         
                                         <div class="col-md-6 col-lg-4 col-sm-12 mb-4 princing-item red">
                                             <div class="pricing-divider ">
                                                 <h3 class="text-light">{{ $allPackage->name }}</h3>
-                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">$</span>{{ $allPackage->price }}<span class="h5">/month</span></h4>
+                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">£</span>{{ $allPackage->price }}<span class="h5">/month</span></h4>
                                                 <svg class="pricing-divider-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
                                                     <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
                                                     c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
@@ -63,7 +63,7 @@ $dataseo=\App\Models\Settings::first();
                                                 </svg>
                                             </div>
                                             <div class="card-body bg-white mt-0 shadow">
-                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush" style="height:300px;">
+                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush" >
                                                     
                                                     @foreach (json_decode($allPackage->permission_slug) as $element)
                                                     <li class="text-capitalize list-group-item">{{ str_replace('_', ' ', $element); }}</li>
@@ -79,11 +79,11 @@ $dataseo=\App\Models\Settings::first();
                                             </div>
                                         </div>
                                         @endif
-                                        @if ($allPackage->name=='Standard')
+                                        @if ($allPackage->id==2)
                                         <div class="col-md-6 col-lg-4 col-sm-12 mb-4 princing-item blue">
                                             <div class="pricing-divider ">
                                                 <h3 class="text-light">{{ $allPackage->name }}</h3>
-                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">$</span> {{ $allPackage->price }} <span class="h5">/month</span></h4>
+                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">£</span> {{ $allPackage->price }} <span class="h5">/month</span></h4>
                                                 <svg class="pricing-divider-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
                                                     <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
                                                     c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
@@ -96,7 +96,7 @@ $dataseo=\App\Models\Settings::first();
                                                 </svg>
                                             </div>
                                             <div class="card-body bg-white mt-0 shadow">
-                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush" style="height: 300px;overflow-y: scroll;">
+                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush" >
                                                     @foreach (json_decode($allPackage->permission_slug) as $element)
                                                     <li class="text-capitalize list-group-item">{{ str_replace('_', ' ', $element); }}</li>
                                                     @endforeach
@@ -112,11 +112,11 @@ $dataseo=\App\Models\Settings::first();
                                         </div>
                                         
                                         @endif
-                                        @if ($allPackage->name=='Premium')
+                                        @if ($allPackage->id==3)
                                         <div class="col-md-6 col-lg-4 col-sm-12 mb-4 princing-item green">
                                             <div class="pricing-divider ">
                                                 <h3 class="text-light">{{ $allPackage->name }}</h3>
-                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">$</span>{{ $allPackage->price }} <span class="h5">/month</span></h4>
+                                                <h4 class="my-0 display-4 text-light font-weight-normal mb-3"><span class="h3">£</span>{{ $allPackage->price }} <span class="h5">/month</span></h4>
                                                 <svg class="pricing-divider-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
                                                     <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729
                                                     c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
@@ -129,7 +129,7 @@ $dataseo=\App\Models\Settings::first();
                                                 </svg>
                                             </div>
                                             <div class="card-body bg-white mt-0 shadow">
-                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush" style="height: 300px;overflow-y: scroll;">
+                                                <ul class="list-unstyled mb-5 position-relative list-group list-group-flush">
                                                     @foreach (json_decode($allPackage->permission_slug) as $element)
                                                     <li class="text-capitalize list-group-item">{{ str_replace('_', ' ', $element); }}</li>
                                                     @endforeach
@@ -160,7 +160,7 @@ $dataseo=\App\Models\Settings::first();
 @section("footer")
 @parent
 
-<style type="text/css">
+{{-- <style type="text/css">
     
 /* width */
     ::-webkit-scrollbar {
@@ -182,7 +182,7 @@ $dataseo=\App\Models\Settings::first();
     background: #b30000;
     }
 
-</style>
+</style> --}}
 
 
 @endsection

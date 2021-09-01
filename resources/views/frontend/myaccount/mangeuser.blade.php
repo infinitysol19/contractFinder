@@ -28,7 +28,7 @@
 
                       <p class="text-danger">Change Package</p>
 
-                        <div class="customAlertpack alert alert-info bg-info text-white font-weight-bold shadow-lg border-0">Selected Package :   {{ $subscription->getuserCurrentPackage->name }}</div>
+                        <h5 class="customAlertpack alert alert-info bg-info text-white font-weight-bold shadow-lg border-0">Selected Package :   {{ $subscription->getuserCurrentPackage->name }}</h5>
                     <div class="row">
 
 

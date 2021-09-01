@@ -219,9 +219,9 @@ if (!isset($token['id'])) {
 
  $charge = $stripe->charges()->create([
  'card' => $token['id'],
- 'currency' => 'USD',
+ 'currency' => 'GBP',
  'amount' =>$request->package_price,
- 'description' => 'Payment from contractfinderpro.infinitysol.co',
+ 'description' => 'Payment from '.config('custom_env_Variables.APP_URL'),
  ]);
 
 

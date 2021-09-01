@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontendControllers\home\HomeController;
 use App\Http\Controllers\frontendControllers\livesearch\LiveSearchController;
 use App\Http\Controllers\frontendControllers\tenderdetailpage\TenderDetailController;
+use App\Http\Controllers\frontendControllers\BuyerBehaviour\BuyerBehaviourController;
+use App\Http\Controllers\frontendControllers\Competitors\CompetitorsController;
 use App\Http\Controllers\Auth\RegisterController;
 
 
@@ -332,36 +334,6 @@ Route::post('/sendpassword', [DashboardController::class, 'sendpassword'])->name
 //// Front  Routes 
 
 
- Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
- Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
-
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-
-Route::post('/postContactFront', [HomeController::class, 'postContactFront'])->name('postContactFront');
-
-
-Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy');
- 
-
-Route::get('livesearch',[LiveSearchController::class,'index'])->name('livesearch');
-
-
-Route::get('historicalsearch',[LiveSearchController::class,'historicalSearch'])->name('historicalsearch');
-
-
-Route::get('tenderdetail',[TenderDetailController::class,'index'])->name('tenderdetail');
-
-
-
-
-
-
-
-Route::get('/myhome', [HomeController::class, 'index'])->name('myhome');
-
-
 
 
 Route::middleware('auth')->group(function ()
@@ -406,6 +378,39 @@ Route::get('recentallyview',[App\Http\Controllers\frontendControllers\myaccount\
 Auth::routes();
 
 
+
+
+
+
+
+
+
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
+
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::post('/postContactFront', [HomeController::class, 'postContactFront'])->name('postContactFront');
+
+
+Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy');
+ 
+
+Route::get('livesearch',[LiveSearchController::class,'index'])->name('livesearch');
+
+
+Route::get('historicalsearch',[LiveSearchController::class,'historicalSearch'])->name('historicalsearch');
+
+
+Route::get('tenderdetail',[TenderDetailController::class,'index'])->name('tenderdetail');
+
+Route::get('/myhome', [HomeController::class, 'index'])->name('myhome');
+
+
 Route::post('/customize_register', [RegisterController::class, 'customize_register'])->name('customize_register');
 
 Route::get('/doneSubscription/{email}',[FrontSubscriberController::class,'doneSubscription'])->name('doneSubscription');
@@ -414,6 +419,13 @@ Route::get('/blog',[FrontNewsController::class, 'blog'])->name('blog');
 
 
 Route::get('/blog/{slug}',[FrontNewsController::class, 'blogsingle'])->name('blogsingle');
+
+
+Route::get('buyer-behaviour-analysis',[BuyerBehaviourController::class, 'index'])->name('buyer_behaviour');
+
+Route::get('find-your-competitors',[CompetitorsController::class, 'index'])->name('find_your_competitors');
+
+
 
 
 

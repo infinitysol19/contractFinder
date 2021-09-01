@@ -120,13 +120,13 @@
 
                                 <li>
 
-                                    <a href="{{route('livesearch')}}">Find Your Competitors</a>
+                                    <a href="{{route('find_your_competitors')}}">Find Your Competitors</a>
 
                                 </li>
 
                                 <li>
 
-                                    <a href="{{route('livesearch')}}">Buyer Behaviour Analysis</a>
+                                    <a href="{{route('buyer_behaviour')}}">Buyer Behaviour Analysis</a>
 
                                 </li>
 

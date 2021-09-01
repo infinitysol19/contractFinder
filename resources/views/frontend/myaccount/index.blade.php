@@ -322,5 +322,13 @@ height: 40px;
 
     background: #442DB9 !important;
 }
+
+.alert-info{
+background: #432CB5 !important;
+}
+.btn-success,.bg-primary{
+    border-radius: 5rem !important;
+background: #432CB5 !important;
+}
 </style>
 @endsection

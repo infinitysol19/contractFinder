@@ -8,4 +8,10 @@ use Illuminate\Http\Request;
 class CompetitorsController extends Controller
 {
     //
+      public function index()
+    {
+
+        // return "hello from live search controller";
+        return view('frontend.competitors.competitors');
+    }
 }

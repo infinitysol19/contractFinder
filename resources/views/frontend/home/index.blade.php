@@ -732,6 +732,125 @@ $dataseo=\App\Models\Settings::first();
 
 
 @endsection
+@section("footer")
+@parent
+<link href="{{ asset('frontend/map/dist/css/jsvectormap.css') }}" rel="stylesheet">
+<script src="{{ asset('frontend/map/dist/js/jsvectormap.js') }}"></script>
+<script src="{{ asset('frontend/map/dist/maps/world-merc.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+
+
+
+
+ var map = new jsVectorMap({
+      map: 'europe_merc',
+      selector: document.querySelector('#map'),
+      zoomButtons: true,
+      regionsSelectable: true,
+      markersSelectable: true,
+      markersSelectableOne: true,
+      regionStyle: {
+        initial: { fill: '#6505C1' }
+      },
+
+ onRegionTipShow: function(e, el, code){
+      el.html(el.html()+' (GDP - '+gdpData[code]+')');
+    },
+      onRegionSelected: function (index, isSelected, selectedRegions) {
+        console.log(selectedRegions)
+      },
+      onRegionTooltipShow: function (tooltip, index) {
+
+        tooltip.css({ backgroundColor: 'white', color: '#35373e' }).text(
+          tooltip.text()
+        )
+      },
+     
+    })
+
+
+ $("#map").hide();
+
+ $(".classShowMap").click(function(e){
+
+    $("#map").toggle();
+  });
+     
+
+
+      $(".js-range-slider").ionRangeSlider({
+        type: "double",
+        grid: true,
+        grid_num: 12,  
+        min: 0,
+        max: 50000,
+        from:0,
+        to:50000,
+        prefix: "£K",
+         onFinish: function (data) {
+            console.dir(data);
+        }, 
+        onStart: function (data) {
+            console.dir(data);
+        },
+    });   
+        
+    });
+  </script>
+<style type="text/css">
+    
+    .btn-search.gray-btn {
+    min-width: 100%;
+       padding: 5px 30px;
+    text-align: center;
+    background: #CCCCCC;
+    white-space: nowrap;
+    border-radius: 20px;
+    font-size: 14px;
+    color: black;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+    font-weight: 400;
+    box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 15%);
+    z-index: 0;
+    position: relative;
+    max-width: 200px;
+}
+
+
+.basic-search {
+   
+    width: 100% !important;
+}
+
+.advance-search .input-field {
+ 
+    margin-bottom: 0px !important;
+
+    }
+
+      .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+    color: white;
+    font-size: 10px;
+    line-height: 1.333;
+    text-shadow: none;
+    padding: 1px 5px;
+    background-color: #ff379a;
+    border-radius: 4px;
+}
+.irs--flat .irs-bar {
+    top: 25px;
+    height: 12px;
+    background-color: #FF379A;
+}
+</style>
+@endsection
 
 
    
