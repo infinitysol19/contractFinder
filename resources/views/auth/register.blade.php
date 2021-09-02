@@ -394,13 +394,13 @@ $dataseo=\App\Models\Settings::first();
     @parent
     <style type="text/css">
 
-.action-button{
+    .action-button{
     border-radius: 4rem !important;
-}
+    }
 
-.action-button-previous{
- border-radius: 4rem !important;
-}
+     .action-button-previous{
+     border-radius: 4rem !important;
+    }
     .text-success{
         color:#442DB9 !important;;
     }

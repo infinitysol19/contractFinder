@@ -34,9 +34,9 @@ $dataseo=\App\Models\Settings::first();
         <div class="container mt--5">
             <div>
                 <div class="auction-wrapper-5 pricingtable" style="position: relative; height: 0px;">
-                    <div class="col-lg-12 col-xl-12 ">
+                    <div class=" ">
 
-                        <div class="container-fluid ">
+                        <div class="">
                         <div class="row m-auto text-center w-100">
                                         @php
                                         $allPackages=App\Models\package::all();

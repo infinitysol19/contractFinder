@@ -403,6 +403,15 @@ Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy
 Route::get('livesearch',[LiveSearchController::class,'index'])->name('livesearch');
 
 
+////////////////////////  Search Tendor //////////////////////////////
+
+Route::get('Ajax_live_Tender/fetch_data',[LiveSearchController::class,'Tendor_Search'])->name('Ajax_live_Tender');
+
+Route::post('/autocomplete/fetch', [LiveSearchController::class,'fetch'])->name('autocomplete.fetch');
+
+ 
+//////////////////////// End  Search Tendor //////////////////////////////
+
 Route::get('historicalsearch',[LiveSearchController::class,'historicalSearch'])->name('historicalsearch');
 
 
