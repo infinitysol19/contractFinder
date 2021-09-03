@@ -38,8 +38,7 @@ $dataseo=\App\Models\Settings::first();
 
    
 
-        @include('include-frontend.searchbox',$data=[
-        'historicalsearch' =>true,'sidenty'=>true]);
+        @include('include-frontend.searchbox',$data=['live'=>false,'competitors'=>false,'buyer'=>false,'historical'=>true]);
 
 
 
@@ -76,7 +75,7 @@ $dataseo=\App\Models\Settings::first();
 
               
                 
-                    @include('include-frontend.horizontal-card');
+                 {{--    @include('include-frontend.horizontal-card'); --}}
                 
                    
              </div>

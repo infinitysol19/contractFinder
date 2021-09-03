@@ -13,7 +13,7 @@ $dataseo=\App\Models\Settings::first();
     <div class="container">
         <div class="row align-items-center justify-content-between align-items-center">
             <div class="col-lg-12 col-xl-12  d-lg-block">
-                @include('include-frontend.searchbox');
+                @include('include-frontend.searchbox',$data=['live'=>true,'competitors'=>false,'buyer'=>false,'historical'=>false]);
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@ $dataseo=\App\Models\Settings::first();
         <div class="m--15" id="Show_Card_Tender_data">
             
             
-            @include('include-frontend.horizontal-card');
+           
             
             
         </div>

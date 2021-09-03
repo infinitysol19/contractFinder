@@ -265,9 +265,9 @@ $xml = $irl->body();
 
 $arrayCount = json_decode($xml,TRUE);
 
-$lenth=$arrayCount['maxPage']+1;
+// $lenth=$arrayCount['maxPage']+1;
 
-  //$lenth=21; 
+  $lenth=2; 
 
 for ($i = 1; $i < $lenth; $i++){
 

@@ -5,25 +5,33 @@ use Illuminate\Http\Request;
 use DB;
 class LiveSearchController extends Controller
 {
-//
+
+
+
+
 public function index()
 {
-$apidata = DB::table('apidata')->orderBy('published_date', 'desc')->paginate(10);
-return view('frontend.livesearch.searchlivetenders', compact('apidata'));
+
+return view('frontend.livesearch.searchlivetenders');
 
 }
+
+
+
 public function historicalSearch()
 {
-// return "hello from live search controller";
 return view('frontend.historicalsearch.historicalsearch');
 }
+
+
+
 public function Tendor_Search(Request $request)
 {
 if($request->ajax())
 {
-
+$tag='open';
 $apidata = DB::table('apidata')->orderBy('published_date', 'desc')->paginate(10);
-//return response()->json($apidata);
+
 return view('include-frontend.horizontal-card', compact('apidata'));
 
 }

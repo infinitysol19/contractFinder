@@ -61,6 +61,10 @@ height: 50vh;
 display: block;
 overflow-y: scroll;
 }
+.bootstrap-tagsinput {
+  
+    border: 1px solid #ff379a;
+    }
 </style>
 <script type="text/javascript">
 $('.dropdown-menu').click(function(event){
@@ -144,7 +148,7 @@ $('.daterange').daterangepicker({
 }, function(start, end, label) {
 
 
-$('.sdaterange').val(start.format('YYYY-MM-DD')+'-'+end.format('YYYY-MM-DD'));
+$('.sdaterange').val(start.format('YYYY-MM-DD')+'_'+end.format('YYYY-MM-DD'));
 });
 
 
@@ -186,12 +190,12 @@ fetch_data(page);
 });
 
 $(document).on('click', '.doSearch', function(event){
-   
-
 var page = 1;
 fetch_data(page);
-
 });
+
+fetch_data(page=1);
+
 /////////////////////// Search Object pattren //////////////////////////////
 
 // let SearchObj={
@@ -221,9 +225,9 @@ function fetch_data(page)
  let priceRange=$('.spriceRange').val();
  let daterange=$('.sdaterange').val();
 
-let Searchfields = [];
- 
+ let stype=$('.searchtype').val();
 
+ let Searchfields = [];
  $('.Searchfields:checked').each(function() {
    Searchfields.push($(this).val());
  });
@@ -237,12 +241,11 @@ $('.overlayer .loader').show();
 let SearchObj={
 searchText:searchText,
 searchFor:searchFor,
-regions:regions,
+regions:regions.split(","),
 priceRange:priceRange,
 daterange:daterange,
 Searchfields:Searchfields,
-status:[],
-type:'live',
+stype:stype,
 };
 
 console.log(SearchObj);
@@ -274,7 +277,9 @@ $('#Show_Card_Tender_data').html(data);
 
 
 ///////////////////////////////////////////////////////
+ @if ($data['buyer']==true || $data['competitors']==true)
 
+ @else
 $('.home-search-searchfield').keyup(function(){
 var query = $(this).val();
 if(query != '')
@@ -300,9 +305,11 @@ $('.suggesionul').fadeOut();
 
 
 $('body').click(function (e) {
-    e.preventDefault();
+  
    $('.suggesionul').hide(); 
 });
+
+@endif
 
 });
 

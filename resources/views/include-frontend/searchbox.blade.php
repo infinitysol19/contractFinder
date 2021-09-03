@@ -1,21 +1,54 @@
 
-<div class="s010 mt-5">
-  <form> 
 
+
+
+    <div class="s010 mt-5">
+    <form>
 
     <input type="hidden" name="searchFor" class="searchFor">
     <input type="hidden" name="sdaterange" class="sdaterange">
     <input type="hidden" name="sregions" class="sregions">
     <input type="hidden" name="spriceRange" class="spriceRange">
 
+    @if ($data['buyer']==true)
+
+    <input type="hidden" name="searchtype" class="searchtype" value="buyer">
+
+    @elseif($data['competitors']==true)
+
+     <input type="hidden" name="searchtype" class="searchtype" value="competitors">
+
+    @elseif($data['historical']==true)
+
+     <input type="hidden" name="searchtype" class="searchtype" value="historical">
+
+    @else
+
+     <input type="hidden" name="searchtype" class="searchtype" value="live">
+
+    @endif
 
     <div class="inner-form">
+
       <img src="{{ asset('frontend/images/dashboard/loading.gif') }}" class="loader_gif img-fluid" width="50" style="display:none">
       <div class="input-group mb-3">
 
+         @if ($data['buyer']==true)
+    <input type="text" class="form-control home-search-searchfield searchText" aria-label="Text input with dropdown button" placeholder="Search By Company Name">
+         @elseif($data['competitors']==true)
+  <input type="text" class="form-control home-search-searchfield searchText" aria-label="Text input with dropdown button" placeholder="Search By Company Name">
+         @else
+  <input type="text" class="form-control home-search-searchfield searchText" aria-label="Text input with dropdown button" placeholder="What do you want to search for?">
+         @endif
+      
 
-        <input type="text" class="form-control home-search-searchfield searchText" aria-label="Text input with dropdown button" placeholder="Start Typing Contract Names">
-        <div class="suggesion_result"></div>
+         @if ($data['buyer']==true || $data['competitors']==true)
+        
+
+       
+        
+       @else
+       <div class="suggesion_result"></div>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary dropdown-toggle home-search-searchfield" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Field</button>
           <div class="dropdown-menu">
@@ -53,6 +86,7 @@
             
           </div>
         </div>
+        @endif
       </div>
       
       <div class="advance-search">
@@ -126,11 +160,17 @@
                   </div>
                 </div>
               </div>
+
+              
               <div class="col-lg-4 col-sm-12 mt-sm-2">
                 <div class="myinputrange">
                   <div class="btn group-btn">
-                    
+                     @if ($data['buyer']==true || $data['competitors']==true || $data['historical']==true)
+        
+                    @else
                     <button type="button" class="btn-search gray-btn"><i class="fa fa-cloud text-dark my-icon-search" aria-hidden="true"></i>SAVE</button>
+
+                   @endif
                   </div>
                 </div>
               </div>
@@ -140,12 +180,16 @@
           <div class="col-lg-3 col-sm-12 mt-sm-2">
             <div class="myinputrange">
               <div class="btn group-btn">
-                
+                 @if ($data['buyer']==true || $data['competitors']==true || $data['historical']==true)
+        
+                      @else
                 <button type="button" class="btn-search gray-btn font-weight-bold"><i class="fa fa-bell-o text-dark my-icon-search" aria-hidden="true"></i>EMAIL ALERTS</button>
+                @endif
               </div>
               
             </div>
           </div>
+        
         </div>
         <div class="row">
           <div class="col-lg-3  col-sm-12 mt-sm-2">
