@@ -14,9 +14,12 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        'App\Console\Commands\TestCron',
+        'App\Console\Commands\ApiOne',
+        'App\Console\Commands\ApiTwo',
+        'App\Console\Commands\ApiThree',
+        'App\Console\Commands\GobalCron',
     ];
-
+  
     /** 
      * Define the application's command schedule.
      *
@@ -25,7 +28,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('test:cron')->everyTwoHours();
+        // $schedule->command('apione:cron')->daily();
+        // $schedule->command('apitwo:cron')->daily();
+        // $schedule->command('apithree:cron')->daily();
+         $schedule->command('globalrun:cron')->everyMinute();
     }
 
     /**

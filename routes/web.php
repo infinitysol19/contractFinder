@@ -69,6 +69,8 @@ Route::get('/dashboard', [DashboardController::class, 'admin_dashboard'])->name(
 
 Route::get('/user', [UserController::class, 'index'])->name('users');
 
+Route::get('/user/subscription/{id}', [UserController::class, 'subscription'])->name('usersAdminsubscription');
+
 Route::get('/getUser_admin_ajax', [UserController::class, 'getUser_admin_ajax'])->name('getUser_admin_ajax');
 Route::get('/adduser', [AddUserController::class, 'index'])->name('adduserpage');
 
@@ -459,3 +461,10 @@ Route::get('apiTest',[HomeController::class,'apiTest'])->name('apiTest');
 
 
 //// Front end Routes 
+
+
+
+
+
+
+

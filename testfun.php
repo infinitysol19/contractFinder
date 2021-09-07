@@ -1,13 +1,43 @@
 <?php
 
+$fh = fopen(__DIR__ .'/tester.txt','r');
+  $newarr=[];
+while ($line = fgets($fh)) {
+  
+  
 
-$s = "Teagasc Skibereen - Construction of new entrance lobby and associated works";
-$ss = explode(" ", $s);
-$res = array();
-foreach($ss as $x) {
-    if (strpos($x, "C") > -1) {
-        array_push($res, $x);
-    }
+ 
+   $ggg=explode(", ",$line);
+
+array_push($newarr,$ggg);
+ 
+
+  
+
+    
 }
-print_r($res);
-?> 
+
+
+
+
+$hhh=[];
+foreach (array_filter($newarr) as $key => $value) {
+
+array_push($hhh,explode(" - ",$value[0]));
+}
+
+$gggj=[];
+
+
+foreach ($hhh as $key => $ef) {
+
+  echo "<pre>";
+  echo "'";
+echo "".$ef[0]."=>"."".$ef[1]."";
+;
+echo "</pre>"; 
+ 
+}
+
+fclose($fh);
+?>

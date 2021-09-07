@@ -30,7 +30,7 @@ public function Tendor_Search(Request $request)
 if($request->ajax())
 {
 $tag='open';
-$apidata = DB::table('apidata')->orderBy('published_date', 'desc')->paginate(10);
+$apidata = DB::table('apidata')->where('tag','active')->orderBy('published_date', 'desc')->paginate(10);
 
 return view('include-frontend.horizontal-card', compact('apidata'));
 

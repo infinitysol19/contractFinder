@@ -26,6 +26,7 @@ class CreateApidataTable extends Migration
             $table->string('location', 300 )->nullable();
             $table->json('location2')->nullable();
             $table->dateTime('published_date')->nullable();
+             $table->dateTime('end_date')->nullable();
             $table->string('oicd', 500 )->nullable();
             $table->string('tid', 500 )->nullable();
             $table->double('price')->nullable();

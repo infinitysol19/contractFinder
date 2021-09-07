@@ -196,19 +196,7 @@ fetch_data(page);
 
 fetch_data(page=1);
 
-/////////////////////// Search Object pattren //////////////////////////////
 
-// let SearchObj={
-// searchText:'',
-// searchFor:[],
-// regions:[],
-// priceRange:[],
-// daterange:'',
-// Searchfields:[],
-// status:[],
-// type:'live',
-// };
-///////////////////// ////////////////////////////////
 
 
 
@@ -218,37 +206,32 @@ function fetch_data(page)
 
 
  let searchText=$('.searchText').val();
-
-
  let searchFor=$(".tagsinput").val()
  let regions=$('.sregions').val();
  let priceRange=$('.spriceRange').val();
  let daterange=$('.sdaterange').val();
-
  let stype=$('.searchtype').val();
-
  let Searchfields = [];
+ let category='';
+
  $('.Searchfields:checked').each(function() {
    Searchfields.push($(this).val());
  });
 
-
-
 $('.overlayer').show();
-
 $('.overlayer .loader').show();
-
 let SearchObj={
 searchText:searchText,
 searchFor:searchFor,
 regions:regions.split(","),
 priceRange:priceRange,
 daterange:daterange,
+category:category,
 Searchfields:Searchfields,
 stype:stype,
 };
 
-console.log(SearchObj);
+
 
 setCookie('SearchObj',SearchObj,322);
 

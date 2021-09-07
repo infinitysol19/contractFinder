@@ -3,31 +3,24 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
-use App\Bidding;
-use Session;
-use App\Conditions;
-use App\Auction;
-use App\AuctionItem;
-use Illuminate\Support\Facades\Crypt;
-use CH;
-use Carbon\Carbon;
-use DB;
-class DeclareBiddingWinerJob extends Command
+use App\Jobs\ApiOneData;
+use App\Jobs\ApiTwoData;
+use App\Jobs\ApiThreeData;
+class GobalCron extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bidding:result'; 
+    protected $signature = 'globalrun:cron';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Validate bidding And Declare winner send email etc Opertations';
+    protected $description = 'globalrun cron';
 
     /**
      * Create a new command instance.
@@ -46,11 +39,13 @@ class DeclareBiddingWinerJob extends Command
      */
     public function handle()
     {
+                  ApiOneData::dispatch()
+                    ->delay(now()->addSeconds(5));
 
- 
-               
-                  
-               
-    
+                  ApiTwoData::dispatch()
+                    ->delay(now()->addSeconds(5));
+
+                  ApiThreeData::dispatch()
+                    ->delay(now()->addSeconds(5));
     }
 }
