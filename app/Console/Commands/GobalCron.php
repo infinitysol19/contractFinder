@@ -39,13 +39,14 @@ class GobalCron extends Command
      */
     public function handle()
     {
-                  ApiOneData::dispatch()
-                    ->delay(now()->addSeconds(5));
+                   // ApiOneData::dispatch()
+                   // ->delay(now()->addSeconds(5));
 
-                  ApiTwoData::dispatch()
-                    ->delay(now()->addSeconds(5));
+                   ApiTwoData::dispatch()
+                   ->delay(now()->addSeconds(5));
 
                   ApiThreeData::dispatch()
                     ->delay(now()->addSeconds(5));
     }
 }
+ 

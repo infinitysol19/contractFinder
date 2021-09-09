@@ -92,6 +92,21 @@ foreach ($array['entry'] as $key => $value) {
 
  $uniqId='req'.$key.'api1';
 
+
+  if(array_key_exists('@attributes', $value['content']['publication']['cpvCodes']['cpvCode'])){
+
+
+
+
+$code4=$value['content']['publication']['cpvCodes']['cpvCode'];
+  }else{
+
+
+$code4=$value['content']['publication']['cpvCodes']['cpvCode'][0];
+
+  }
+
+
  $apidata=DB::table('apidata')->where('tender_id',$uniqId);
 
  
@@ -108,6 +123,7 @@ $apidata->update([
 'summary'=>$this->isArraycheck($value['summary']),
 'cpvjson'=>json_encode($value['content']['publication']['cpvCodes']['cpvCode']),
 'location'=>'Ireland',
+'cpv'=>$code4['@attributes']['code'],
 'published_date'=>date('Y-m-d H:i:s',strtotime($value['published'])),
 'end_date'=>date('Y-m-d H:i:s',strtotime($value['content']['publication']['etq'])),
 'buyer_location'=>'Ireland',
@@ -136,6 +152,7 @@ DB::table('apidata')->insert([
 'description'=>$this->isArraycheck($value['content']['publication']['detailedDescription']),
 'summary'=>$this->isArraycheck($value['summary']),
 'cpvjson'=>json_encode($value['content']['publication']['cpvCodes']['cpvCode']),
+'cpv'=>$code4['@attributes']['code'],
 'location'=>'Ireland',
 'published_date'=>date('Y-m-d H:i:s',strtotime($value['published'])),
 'end_date'=>date('Y-m-d H:i:s',strtotime($value['content']['publication']['etq'])),

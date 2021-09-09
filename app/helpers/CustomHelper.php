@@ -1,6 +1,6 @@
 <?php
 namespace App\helpers;
-
+use DateTime;
 class CustomHelper
 {
 
@@ -25,7 +25,14 @@ public function NewsLetterSubscriber()
 
 
 
-
+public function DaysDiff($date1,$date2)
+{
+  $date1 = new DateTime($date1);
+  $date2 = new DateTime($date2);
+  $interval2 = $date1->diff($date2);
+                               
+  return  $interval2->days;
+}
 
 
 

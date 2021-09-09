@@ -120,6 +120,9 @@ return "";
 
 }
 
+function isEmpty(str) {
+    return (!str || str.length === 0 );
+}
 
 
 $(".js-range-slider").ionRangeSlider({
@@ -191,19 +194,16 @@ fetch_data(page);
 
 $(document).on('click', '.doSearch', function(event){
 var page = 1;
+setCookie('SetCategory','',322);
+
 fetch_data(page);
 });
 
 fetch_data(page=1);
 
-
-
-
-
 ////////////////////  Search Data ////////////////////
 function fetch_data(page)
 {
-
 
  let searchText=$('.searchText').val();
  let searchFor=$(".tagsinput").val()
@@ -213,6 +213,11 @@ function fetch_data(page)
  let stype=$('.searchtype').val();
  let Searchfields = [];
  let category='';
+ if(!isEmpty(getCookie("SetCategory"))){
+
+   let recivCate=JSON.parse(getCookie("SetCategory"));
+   category=recivCate.categorycode;
+ }
 
  $('.Searchfields:checked').each(function() {
    Searchfields.push($(this).val());
@@ -239,13 +244,13 @@ setCookie('SearchObj',SearchObj,322);
 $.ajax({
 url:"/Ajax_live_Tender/fetch_data?page="+page,
 type:"GET",
-data:{
-name:'f',
-email:'cxzcmzx',
-
-},
+data:SearchObj, 
 success:function(data)
 {
+
+console.log(data)
+$('.tagsinput').tagsinput('add',searchText.toString());
+$('.tagsinput').tagsinput('add',regions.toString());
 $('.overlayer').hide();
 $('.overlayer .loader').hide();
 $('#Show_Card_Tender_data').html(data);

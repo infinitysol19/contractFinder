@@ -86,7 +86,7 @@
                             
                             @endif
                         </span>
-                        <span class="list-item col-sm-4">
+                            <span class="list-item col-sm-4 text-capitalize">
                             <span class="list-id">Category</span>
                             {{-- ////////////////////////////////////// --}}
                             
@@ -224,14 +224,19 @@
                             <span class="text-dark font-weight-bold">
                                 
                                 @if(!empty($row->price) && !empty($row->min_price))
-                                Min: {{$row->min_price  }} Max: {{ $row->price }}
+                                Value: {{$row->min_price  }} to {{$row->price  }}
                                 @elseif(!empty($row->price))
-                                {{ $row->price }}
+                                Value: {{ $row->min_price }}
                                 @else
-                                {{ $row->min_price }}
+                               Value: {{ $row->min_price }}
                                 @endif
-                                {{ $row->currency }}
+                               
                                 
+                                @if($row->currency=='GBP')
+                               {{ "£" }}
+                                @else
+                                 {{ $row->currency }}
+                                @endif
                             </span>
                             <br>
                             @endif
@@ -245,15 +250,13 @@
                                 
                                 @php
                                 
-                                $date1 = new DateTime($row->end_date);
-                                $date2 = new DateTime($row->published_date);
-                                $interval1 = $date1->diff($date2);
-                                // echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days ";
-                                echo $interval1->days . " days ";
-
+                               
+                                echo CH::DaysDiff($row->end_date,$row->published_date).'Days';
                                 $progressbar=0;
 
-                                $duration=$interval1->days;
+                               
+
+                                 $duration=CH::DaysDiff($row->end_date,$row->published_date);
                                 
                                 @endphp
                             </span>
@@ -263,16 +266,12 @@
                                 
                                 @php
                                 
-                                $date1 = new DateTime($row->end_date);
-                                $date2 = new DateTime($row->published_date);
-                                $interval2 = $date1->diff($date2);
-                                // echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days ";
-                                echo $interval2->days . " days ";
-
+                               echo CH::DaysDiff($row->end_date,$row->published_date).'Days';
                                 $progressbar=0;
 
-                                $duration=$interval2->days;
-                                
+                               
+
+                                 $duration=CH::DaysDiff($row->end_date,$row->published_date);
                                 @endphp
                             </span>
                             @endif
@@ -280,15 +279,12 @@
                             <span class="text-dark font-weight-bold">Duration:
                                 
                                 @php
-                                
-                                $date1 = new DateTime($row->end_date);
-                                $date2 = new DateTime($row->published_date);
-                                $interval = $date1->diff($date2);
-                                // echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days ";
-                                echo $interval->days . " days ";
+                             echo CH::DaysDiff($row->end_date,$row->published_date).'Days';
                                 $progressbar=0;
 
-                                $duration=$interval->days;
+                               
+
+                                 $duration=CH::DaysDiff($row->end_date,$row->published_date);
                                 
                                 @endphp
                             </span>
@@ -299,14 +295,14 @@
                         <div class="progress">
                             <!-- <span class="text-dark">Progress Bar</span> -->
                             @if($row->api_type=='1')
-                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $interval1->days}} Days to close
+                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $duration}} Days to close
                             </div>
                             @endif
 
                             @if($row->api_type=='2')
                             
                             @if($row->tag=='active')
-                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $interval2->days}} Days to close
+                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $duration}} Days to close
                             </div>
                             @else
                             <div class="progress-bar progress-bar-striped bg-dark progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Status: Canceled
@@ -319,7 +315,7 @@
                             <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> Status: Awarded
                             </div>
                             @elseif($row->tag=='active')
-                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $interval->days}} Days to close
+                            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $duration}} Days to close
                             </div>
                             @elseif($row->tag=='planning')
                             <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: {{ $duration }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> Status: Planning
@@ -337,7 +333,7 @@
                                 <a href="#0" class="custom-button-white mt-4 font-weight-bold"><i class="fas fa-star h6 text-warning"></i>Watch</a>
                             </div>
                             <div class="col-md-6">
-                                <a href="#0" class="custom-button mt-4 font-weight-bold"><i class="fas fa-eye h6 text-light"></i>View</a>
+                                <a href="{{ route('tenderdetail',['id'=>$row->id]) }}" class="custom-button mt-4 font-weight-bold"><i class="fas fa-eye h6 text-light"></i>View</a>
                             </div>
                             
                         </div>

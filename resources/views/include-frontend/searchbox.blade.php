@@ -66,7 +66,7 @@
                 <label for="checkbox3">Location</label>
               </div>
               <div class="funkyradio-success">
-                <input type="checkbox" name="Searchfields[]" id="checkbox4" class="Searchfields" checked value="cpv"/>
+                <input type="checkbox" name="Searchfields[]" id="checkbox4" class="Searchfields"  value="cpv"/>
                 <label for="checkbox4">CPV</label>
               </div>
               <div class="funkyradio-success">
@@ -74,9 +74,17 @@
                 <label for="checkbox5">Summary</label>
               </div>
               <div class="funkyradio-success">
-                <input type="checkbox" name="Searchfields[]" id="checkbox6" class="Searchfields" value="award" checked/>
+                <input type="checkbox" name="Searchfields[]" id="checkbox6" class="Searchfields" value="award" />
                 <label for="checkbox6">Award</label>
               </div>
+             {{--  <div class="funkyradio-success">
+                <input type="checkbox" name="Searchfields[]" id="checkbox7" class="Searchfields" value="active" />
+                <label for="checkbox6">Active</label>
+              </div>
+              <div class="funkyradio-success">
+                <input type="checkbox" name="Searchfields[]" id="checkbox8" class="Searchfields" value="cancel" />
+                <label for="checkbox6">Colse</label>
+              </div> --}}
               <div class="funkyradio-success">
                 <input type="checkbox" name="Searchfields[]" id="checkbox7" class="Searchfields" value="lang" checked/>
                 <label for="checkbox7">Response language</label>

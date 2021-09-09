@@ -81,7 +81,7 @@ $dataseo=\App\Models\Settings::first();
 
     <div class="browse-slider-section mt--140">
 
-        <div class="container">
+        <div class="container"> 
 
             <div class="section-header-2 mb-4">
 
@@ -105,7 +105,7 @@ $dataseo=\App\Models\Settings::first();
 
                 <div class="browse-slider owl-theme owl-carousel">
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category='75'>
 
                         <img src="{{asset('frontend/images/auction/categories/4.png')}}" alt="auction">
 
@@ -113,7 +113,7 @@ $dataseo=\App\Models\Settings::first();
 
                     </a>
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category="09">
 
                         <img src="{{asset('frontend/images/auction/categories/5.png')}}" alt="auction">
 
@@ -121,7 +121,7 @@ $dataseo=\App\Models\Settings::first();
 
                     </a>
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category="98">
 
                         <img src="{{asset('frontend/images/auction/categories/6.png')}}" alt="auction">
 
@@ -129,7 +129,7 @@ $dataseo=\App\Models\Settings::first();
 
                     </a>
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category='72'>
 
                         <img src="{{asset('frontend/images/auction/categories/1.png')}}" alt="auction">
 
@@ -137,7 +137,7 @@ $dataseo=\App\Models\Settings::first();
 
                     </a>
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category='45'>
 
                         <img src="{{asset('frontend/images/auction/categories/2.png')}}" alt="auction">
 
@@ -145,7 +145,7 @@ $dataseo=\App\Models\Settings::first();
 
                     </a>
 
-                    <a href="#0" class="browse-item">
+                    <a href="#0" class="browse-item categorycode" category="80">
 
                         <img src="{{asset('frontend/images/auction/categories/3.png')}}" alt="auction">
 
@@ -196,7 +196,7 @@ $dataseo=\App\Models\Settings::first();
 
             <div class="load-wrapper">
 
-                <a href="#0" class="normal-button">Search All Auctions</a>
+                <a href="{{ route('livesearch') }}" class="normal-button">Search All Auctions</a>
 
             </div>
 
@@ -745,6 +745,75 @@ $(document).ready(function() {
 
 
 
+function setCookie(cname, cvalue, exdays) {
+
+var d = new Date();
+
+d.setTime(d.getTime() + (exdays*24*60*60*1000));
+
+var expires = "expires="+ d.toUTCString();
+
+document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+}
+
+
+
+function getCookie(cname) {
+
+var name = cname + "=";
+
+var decodedCookie = decodeURIComponent(document.cookie);
+
+var ca = decodedCookie.split(';');
+
+for(var i = 0; i <ca.length; i++) {
+
+var c = ca[i];
+
+while (c.charAt(0) == ' ') {
+
+c = c.substring(1);
+
+}
+
+if (c.indexOf(name) == 0) {
+
+return c.substring(name.length, c.length);
+
+}
+
+}
+
+return "";
+
+}
+
+function isEmpty(str) {
+    return (!str || str.length === 0 );
+}
+
+$('.categorycode').click(function (e) {
+    e.preventDefault();
+
+    let SetCategory=`{"categorycode":"${$(this).attr('category')}", "home":true}`;
+
+   
+
+    setCookie("SetCategory",SetCategory,345);
+
+
+   if(!isEmpty(getCookie("SetCategory"))){
+
+
+    
+  
+    window.location.href="livesearch";
+
+   }
+
+
+});
 
 
  var map = new jsVectorMap({

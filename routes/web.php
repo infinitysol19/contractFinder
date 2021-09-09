@@ -417,7 +417,7 @@ Route::post('/autocomplete/fetch', [LiveSearchController::class,'fetch'])->name(
 Route::get('historicalsearch',[LiveSearchController::class,'historicalSearch'])->name('historicalsearch');
 
 
-Route::get('tenderdetail',[TenderDetailController::class,'index'])->name('tenderdetail');
+Route::get('tenderdetail/{id}',[TenderDetailController::class,'index'])->name('tenderdetail');
 
 Route::get('/myhome', [HomeController::class, 'index'])->name('myhome');
 
